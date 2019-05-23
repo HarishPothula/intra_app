@@ -1,0 +1,214 @@
+<div class="container container-fluid">
+<form [formGroup]="initialForm">
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Client:
+      </label>
+    </div>
+    <div class="col-6">
+      <ng-select formControlName="clientName" #clientName
+                 [items]="clientsList"
+                 bindLabel="name"
+                 placeholder="Select Client"
+                 [(ngModel)]="onboardingInfo.clientName"></ng-select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Account Manager:
+      </label>
+    </div>
+    <div class="col-6">
+      <ng-select formControlName="accountManager"
+                 [items]="accountManagersList"
+                 bindLabel="name"
+                 placeholder="Select Account Manager"
+                 [(ngModel)]="onboardingInfo.accountManager"></ng-select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Recruiter:
+      </label>
+    </div>
+    <div class="col-6">
+      <ng-select formControlName="recruiter"
+                 [items]="recruitersList"
+                 bindLabel="name"
+                 placeholder="Select Recruiter"
+                 [(ngModel)]="onboardingInfo.recruiter"></ng-select>
+    </div>
+  </div>
+</form>
+<fieldset *ngIf="initialForm.valid">
+  <legend> Personal Information of Employee</legend>
+  <form [formGroup]="personalForm">
+    <div class="row mb-3 mt-4">
+      <div class="col-3">
+        <label required>
+          Candidate UUID:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="uuid" class="form-control"
+               [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.uuid" [disabled]="recordId">
+      </div>
+    </div>
+    <div class="row mb-3 mt-4">
+      <div class="col-3">
+        <label required>
+          First Name:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.firstName">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Last Name:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.lastName">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          DOB:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="date" formControlName="dob" placeholder="mm/dd/yyyy" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.dob">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          SSN:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="number" formControlName="ssn" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.ssn">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Phone No:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="number" formControlName="phNo" pattern="^((\\+91-?)|0)?[0-9]{10}$" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.phNo">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          e-mail:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="email" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+               class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.email">
+      </div>
+    </div>
+    <div formGroupName="address">
+      <fieldset>
+        <legend>Address</legend>
+        <div class="row mb-3">
+          <div class="col-3">
+            <label required>
+              Street:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="street" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.street">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-3">
+            <label required>
+              City:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="city" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.city">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-3">
+            <label required>
+              State:
+            </label>
+          </div>
+          <div class="col-6">
+            <ng-select formControlName="state"
+                       [items]="statesList"
+                       bindLabel="name"
+                       placeholder="Select State"
+                       [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.state"></ng-select>
+<!--            <select formControlName="state" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.state">-->
+<!--              <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>-->
+<!--            </select>-->
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-3">
+            <label required>
+              Zip Code:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="zip" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.zip">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Work Authorization Type:
+        </label>
+      </div>
+      <div class="col-3">
+        <ng-select formControlName="visa"
+                   [items]="visaTypes"
+                   bindLabel="type"
+                   placeholder="Select Visa Type"
+                   [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.visa" #visa></ng-select>
+      </div>
+    </div>
+    <div *ngIf="onboardingInfo.personal.visa && (onboardingInfo.personal.visa.id != 1 && onboardingInfo.personal.visa.id != 2)">
+      <div class="row">
+        <div class="col-3">
+          <label required>
+            Visa End Date:
+          </label>
+        </div>
+        <div class="col-3">
+          <input type="date" formControlName="expiration" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.expiration">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label required>
+            i-94 End Date:
+          </label>
+        </div>
+        <div class="col-3">
+          <input type="date" formControlName="i94date" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.i94date">
+        </div>
+      </div>
+    </div>
+  </form>
+</fieldset>
+<div class="float-right">
+  <button type="button" class="btn btn-primary" (click)="onNext()" [disabled]="initialForm.invalid || personalForm.invalid">Next</button>
+</div>
+</div>

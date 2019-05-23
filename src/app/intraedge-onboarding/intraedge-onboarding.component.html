@@ -1,0 +1,219 @@
+<div class="mt-5">
+  <form [formGroup]="parentFormGroup">
+    <div class="row mb-3">
+      <div class="col-4">
+        <label required>
+          Employment Type:
+        </label>
+      </div>
+      <div class="col-6">
+        <ng-select formControlName="employmentType"
+                   [items]="employmentTypes"
+                   bindLabel="name"
+                   placeholder="Select Employment Type"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employmentType" #empType></ng-select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <label required>
+          Offer Status:
+        </label>
+      </div>
+      <div class="col-6">
+        <ng-select formControlName="offerStatus"
+                   [items]="offerstatusTypes"
+                   bindLabel="value"
+                   placeholder="Select Offer Status"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.offerStatus" #status></ng-select>
+      </div>
+    </div>
+    <div *ngIf="(onboardingInfo.internal.employmentType && onboardingInfo.internal.employmentType.id == 3) &&
+(onboardingInfo.internal.offerStatus && onboardingInfo.internal.offerStatus.id == 1)">
+      <fieldset>
+        <legend>Employer Information</legend>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label required>
+              Company Name:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="companyName" class="form-control"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.companyName">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label required>
+              EIN:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="number" formControlName="ein" class="form-control"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer &&  onboardingInfo.internal.employer.ein">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label required>
+              State of Registration:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="stateReg" class="form-control"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.stateReg">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label required>
+              Contact Person Name:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="name" class="form-control"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.name">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label required>
+              Phone Number:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="number" formControlName="phNo" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                   class="form-control"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.phNo">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-4">
+            <label required>
+              e-mail:
+            </label>
+          </div>
+          <div class="col-6">
+            <input type="text" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                   class="form-control"
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.email">
+          </div>
+        </div>
+        <div formGroupName="address">
+          <fieldset>
+            <legend>Address</legend>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  Street:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="street" class="form-control"
+                       [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.street">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  City:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="city" class="form-control"
+                       [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.city">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  State:
+                </label>
+              </div>
+              <div class="col-6">
+                <select formControlName="state"
+                        [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.state">
+                  <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  Zip Code:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="zip" class="form-control"
+                       [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.zip">
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </fieldset>
+    </div>
+    <div *ngIf="onboardingInfo.internal.offerStatus && onboardingInfo.internal.offerStatus.id == 1">
+      <div class="row mb-3">
+        <div class="col-4">
+          <label required>
+            Background Check Status:
+          </label><br/>
+          <small *ngIf="bgvStartDate.value && bgvEndDate.value" class="text-success">Completed</small>
+          <small *ngIf="bgvStartDate.value && !bgvEndDate.value" class="text-primary">In Progress</small>
+        </div>
+        <div class="col-6 row">
+          <label>Start
+            <input type="date" formControlName="bgvstartDate" class="form-control" #bgvStartDate
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.bgvstartDate">
+          </label>
+
+          <label>End
+            <input type="date" formControlName="bgvendDate" class="form-control" #bgvEndDate
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.bgvendDate">
+          </label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <label required>
+            Drug Test Status:
+          </label><br/>
+          <small *ngIf="drugTeststartDate.value && drugTestendDate.value" class="text-success">Completed</small>
+          <small *ngIf="drugTeststartDate.value && !drugTestendDate.value" class="text-primary">In Progress</small>
+        </div>
+        <div class="col-6 row">
+          <label>Start
+            <input type="date" formControlName="drugTeststartDate" class="form-control" #drugTeststartDate
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.drugTeststartDate">
+          </label>
+          <label>End
+            <input type="date" formControlName="drugTestendDate" class="form-control" #drugTestendDate
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.drugTestendDate">
+          </label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4">
+          <label required>
+            NDA:
+          </label><br/>
+          <small *ngIf="ndastartDate.value && ndaendDate.value" class="text-success">Completed</small>
+          <small *ngIf="ndastartDate.value && !ndaendDate.value" class="text-primary">In Progress</small>
+        </div>
+        <div class="col-6 row">
+          <label>Start
+            <input type="date" formControlName="ndastartDate" class="form-control" #ndastartDate
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.ndastartDate">
+          </label>
+          <label>End
+            <input type="date" formControlName="ndaendDate" class="form-control" #ndaendDate
+                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.ndaendDate">
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+

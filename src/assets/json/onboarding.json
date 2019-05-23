@@ -1,0 +1,82 @@
+{
+  "clientName": {
+    "id": 1,
+    "name": "American Express"
+  },
+  "recruiter": {
+    "id": 1,
+    "name": "Amit Patra"
+  },
+  "accountManager": {
+    "id": 3,
+    "name": "Kumar Subramaniam"
+  },
+  "personal": {
+    "uuid": 1,
+    "firstName": "Harish Reddy",
+    "lastName": "Pothula",
+    "dob": "1993-04-01",
+    "ssn": 162717982,
+    "phNo": 4807373335,
+    "email": "write2phreddy@gmail.com",
+    "address": {
+      "street": "18212 N 31 Dr",
+      "city": "Phoenix",
+      "state": "Arizona",
+      "zip": 85053
+    },
+    "visa": {
+      "id": 3,
+      "type": "H1B"
+    },
+    "expiration": "2019-05-20",
+    "i94date": "2019-05-20"
+  },
+  "internal": {
+    "employmentType": {
+      "id": 1,
+      "name": "W-2(Salaried)"
+    },
+    "offerStatus": {
+      "id": 1,
+      "value": "Accepted"
+    },
+    "employer": {
+      "companyName": null,
+      "name": null,
+      "ein": null,
+      "stateReg": null,
+      "phNo": null,
+      "email": null,
+      "address": {
+        "street": null,
+        "city": null,
+        "state": null,
+        "zip": null
+      }
+    },
+    "bgvstartDate": "2019-05-20",
+    "bgvendDate": "2019-05-20",
+    "drugTeststartDate": "2019-05-20",
+    "drugTestendDate": "2019-05-20",
+    "ndastartDate": "2019-05-20",
+    "ndaendDate": "2019-05-20"
+  },
+  "client":
+    {
+      "ads": "121313",
+      "email": "write2phreddy@gmail.com",
+      "role": "Engineer2",
+      "sow": {
+        "id": 3,
+        "type": "Use Current SOW"
+      },
+      "cafeNumber": "12123",
+      "po": "1212",
+      "poLineNumber": "34567",
+      "rate": 76,
+      "startDate": "2019-05-20",
+      "endDate": null,
+      "laptopNo": "123456789"
+    }
+}

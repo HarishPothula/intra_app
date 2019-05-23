@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link" routerLink="/app/onboardings" *ngIf="userName === 'admin'">Onboardings</a>
+    <a class="nav-item nav-link" routerLink="/app/compliance">Compliance</a>
+    <a class="nav-item nav-link" routerLink="/" >Logout</a>
+    <a class="nav-item nav-link" title="{{userName}}"><i class="fas fa-user-circle"></i></a>
+  </div>
+</nav>
+<div class="header ml-5 mt-2">
+  <figure class="wpb_wrapper vc_figure">
+    <a href="/" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="328" height="110"
+                                                                                         src="https://intraedge.com/wp-content/uploads/IntraEdge-Logo-Technology@2x.png"
+                                                                                         class="vc_single_image-img attachment-full"
+                                                                                         alt=""></a>
+  </figure>
+</div>
+<router-outlet></router-outlet>

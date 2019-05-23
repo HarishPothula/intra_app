@@ -1,0 +1,37 @@
+<div class="header ml-5 mt-2">
+  <figure class="wpb_wrapper vc_figure">
+    <a href="/" target="_self" class="vc_single_image-wrapper   vc_box_border_grey"><img width="328" height="110"
+                                                                                         src="https://intraedge.com/wp-content/uploads/IntraEdge-Logo-Technology@2x.png"
+                                                                                         class="vc_single_image-img attachment-full"
+                                                                                         alt=""></a>
+  </figure>
+</div>
+<div class="col-md-6 col-md-offset-3 container container-fluid">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm">
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          User Name:
+        </label>
+      </div>
+      <div class="col-6">
+        <input class="form-control" formControlName="userName" type="text">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Password:
+        </label>
+      </div>
+      <div class="col-6">
+        <input class="form-control" formControlName="password" type="password">
+      </div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary" (click)="login()">Login</button>
+    </div>
+  </form>
+</div>
+

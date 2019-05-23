@@ -1,0 +1,24 @@
+<div class="container container-fluid card">
+  <button class="btn btn-link text-right" (click)="onPrevious()" *ngIf="currentDate">Previous</button>
+  <button class="btn btn-link text-right" (click)="onNext()" *ngIf="!currentDate">Next</button>
+  <div class="mt-5 mb-3">
+    <h5>Timesheets for {{weekStart | date}} to {{weekEnd | date}}</h5>
+  </div>
+  <div class="row container container-fluid align-items-center">
+  <div class="col-1" *ngFor="let day of days">
+    {{day}}
+    <div class="mt-2 mb-5">
+      <input class="form-control"/>
+    </div>
+  </div>
+  </div>
+  <div class="row mb-3">
+      <label required class="ml-3 mr-3">
+        Client Time sheets:
+      </label>
+      <input type="file" name="pic">
+  </div>
+  <div class="text-right mb-3">
+    <button class="btn btn-primary col-3"> Submit</button>
+  </div>
+</div>

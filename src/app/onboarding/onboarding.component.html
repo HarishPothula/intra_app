@@ -1,0 +1,27 @@
+<div class="container container-fluid">
+<ngb-tabset>
+  <ngb-tab title="Intraedge">
+    <ng-template ngbTabContent>
+      <form [formGroup]="intraEdgeForm">
+      <app-intraedge-onboarding [onboardingInfo]="onboardingInfo" #intraedgeOnboardingComponent [parentFormGroup]="intraEdgeForm"></app-intraedge-onboarding>
+      </form>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="American Express">
+    <ng-template ngbTabContent>
+      <form [formGroup]="clientForm">
+      <app-client-onboarding [onboardingInfo]="onboardingInfo" #clientOnboardingComponent  [parentFormGroup]="clientForm" ></app-client-onboarding>
+      </form>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+<div>
+  <!--<div class="float-left" *ngIf="clientOnboardingForm.value.endDate">
+    <button type="button" class="btn btn-primary mr-3" awPreviousStep>Off Board</button>
+  </div>-->
+  <div class="float-right">
+    <button type="button" class="btn btn-primary mr-3" (click)="onBack()">Back</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="intraEdgeForm.invalid && clientForm.invalid">Submit</button>
+  </div>
+</div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container container-fluid">
+  <h4 class="mt-5 mb-5">Onboardings</h4>
+  <ngx-datatable
+    #table
+    class='material'
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10"
+    [rows]='employeesData'>
+    <ngx-datatable-column name="Employee Id">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.guid}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Name">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.firstName + ',' +  row.lastName}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Phone Number">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.phNo}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Client">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.client}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+       <button class="btn btn-primary" (click)="onDelete(row)">
+         Delete
+       </button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <button class="btn btn-primary" (click)="onEdit(row)">
+          Edit
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

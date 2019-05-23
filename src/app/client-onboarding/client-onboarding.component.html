@@ -1,0 +1,145 @@
+<div class="mt-5">
+  <form [formGroup]="parentFormGroup">
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          ADS Id:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="ads" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.ads">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          e-mail:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="email" formControlName="email" class="form-control"
+               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.email">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Role:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="role" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.role">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          SOW:
+        </label>
+      </div>
+      <div class="col-6">
+        <ng-select formControlName="sow"
+                   [items]="sowTypes"
+                   bindLabel="type"
+                   placeholder="Select Visa Type"
+                   [(ngModel)]="onboardingInfo.client && onboardingInfo.client.sow" #sow></ng-select>
+      </div>
+    </div>
+    <div *ngIf="onboardingInfo.client.sow && (onboardingInfo.client.sow.id == 1 || onboardingInfo.client.sow.id == 2)">
+      <div class="row mb-3">
+        <div class="col-3">
+          <label required>
+            SOW submitted on:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="date" formControlName="sowSubmittedOn" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.sowSubmittedOn">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <label required>
+            SOW submitted by:
+          </label>
+        </div>
+        <div class="col-6">
+          <ng-select formControlName="sowSubmittedBy"
+                     [items]="sowSubmittersList"
+                     bindLabel="name"
+                     placeholder="Select Employment Type"
+                     [(ngModel)]="onboardingInfo.client && onboardingInfo.client.sowSubmittedBy"></ng-select>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          CAFE number:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="cafeNumber" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.cafeNumber">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          P.O number:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="po" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.po">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          P.O line number:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="poLineNumber" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.poLineNumber">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Laptop serial number:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="text" formControlName="laptopNo" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.laptopNo">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Rate:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="number" formControlName="rate" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.rate">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Contract Start Date:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="date" formControlName="startDate" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.startDate">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-3">
+        <label required>
+          Contract End Date:
+        </label>
+      </div>
+      <div class="col-6">
+        <input type="date" formControlName="endDate" class="form-control" [(ngModel)]="onboardingInfo.client && onboardingInfo.client.endDate">
+      </div>
+    </div>
+  </form>
+</div>
