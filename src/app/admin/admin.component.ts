@@ -25,7 +25,12 @@ export class AdminComponent implements OnInit {
   JSONData: any;
   @ViewChild('myInput')
   myInputVariable: ElementRef;
-
+public categeory = [
+  {id: 1, cat: 'Category 1'},
+  {id: 2, cat: 'Category 2'},
+  {id: 3, cat: 'Category 3'},
+  {id: 4, cat: 'Category 4'},
+];
   constructor(private excel: ExcelService,
               private activatedRoute: ActivatedRoute,
               private apiService: ApiService) {
@@ -101,5 +106,15 @@ export class AdminComponent implements OnInit {
 
   onExport() {
     this.excel.exportAsExcelFile(this.dataToBeExported, 'ExportedFromAngularAPP');
+  }
+
+  addRow(tableID) {
+    const table = document.getElementById('my-table-body');
+    const row = table.insertRow(0);
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+  }
+  onDelete(row) {
+    console.log('roe', row);
   }
 }
