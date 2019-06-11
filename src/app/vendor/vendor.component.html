@@ -1,0 +1,140 @@
+<div class="container container-fluid">
+  <div class="float-right row"><button routerLink="/app/vendors-list" class="btn-link">Show </button> </div>
+  <h4>Sub Vendor Information</h4>
+<form [formGroup]="vendorForm">
+  <div class="row mb-3 mt-4">
+    <div class="col-3">
+      <label required>
+        Vendor Name:
+      </label>
+    </div>
+    <div class="col-6">
+      <input type="text" formControlName="vendorName" class="form-control" [(ngModel)]="vendorInfo.vendorName">
+    </div>
+  </div>
+  <div class="row mb-3 mt-4">
+    <div class="col-3">
+      <label required>
+        Contact Person:
+      </label>
+    </div>
+    <div class="col-6">
+      <input type="text" formControlName="contactPerson" class="form-control" [(ngModel)]="vendorInfo.contactPerson">
+    </div>
+  </div>
+  <div class="row mb-3 mt-4">
+    <div class="col-3">
+      <label required>
+        Contact:
+      </label>
+    </div>
+    <div class="col-6">
+      <input type="number" formControlName="contact" class="form-control" [(ngModel)]="vendorInfo.contact">
+    </div>
+  </div>
+  <div class="row mb-3 mt-4">
+    <div class="col-3">
+      <label required>
+        Email:
+      </label>
+    </div>
+    <div class="col-6">
+      <input type="text" formControlName="email" class="form-control" [(ngModel)]="vendorInfo.email"
+             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+    </div>
+  </div>
+  <div class="row mb-3 mt-4">
+    <div class="col-3">
+      <label required>
+        Region:
+      </label>
+    </div>
+    <div class="col-6">
+      <ng-select formControlName="region"
+                 [items]="countriesList"
+                 bindLabel="name"
+                 placeholder="Select Country"
+                 [(ngModel)]="vendorInfo.region"
+      (change)="onCountry($event)"></ng-select>
+    </div>
+  </div>
+  <div>
+    <fieldset>
+      <legend>Address</legend>
+      <div class="row mb-3">
+        <div class="col-3">
+          <label required>
+            Street:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="street" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.street) || vendorInfo.street">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <label required>
+            City:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="city" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.city) || vendorInfo.city">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <label required>
+            State:
+          </label>
+        </div>
+        <div class="col-6">
+          <ng-select formControlName="state"
+                     [items]="statesList"
+                     bindLabel="name"
+                     placeholder="Select State"
+                     [(ngModel)]="(vendorInfo.address && vendorInfo.address.state) || vendorInfo.state"></ng-select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-3">
+          <label required>
+            Zip:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="number" formControlName="zip" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.zip) || vendorInfo.zip">
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <div class="row mb-3 mt-4">
+    <div class="col-3">
+      <label required>
+        Scope of Services Performed:
+      </label>
+    </div>
+    <div class="col-6">
+      <input type="text" formControlName="scopeOfServices" class="form-control" [(ngModel)]="vendorInfo.scopeOfServices">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        New Submittal:
+      </label>
+    </div>
+    <div class="col-6">
+      <ng-select formControlName="newSubmittal"
+                 [items]="booleanList"
+                 bindLabel="value"
+                 placeholder="Select New Submittal"
+                 [(ngModel)]="vendorInfo.newSubmittal"></ng-select>
+    </div>
+  </div>
+  <div class="float-right">
+    <button class="btn btn-primary" (click)="onSubmit(vendorInfo)" [disabled]="vendorForm.invalid">Submit</button>
+  </div>
+</form>
+
+</div>
+

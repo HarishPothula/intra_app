@@ -26,6 +26,9 @@ import {AuthGuard} from '../services/auth.guard';
 import { MainComponent } from './main/main.component';
 import {ExcelService} from '../services/excel.service';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { VendorComponent } from './vendor/vendor.component';
+import { ConsultantComponent } from './consultant/consultant.component';
+import { VendorsListComponent } from './vendors-list/vendors-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import {NgSelectModule} from '@ng-select/ng-select';
     OffboardingComponent,
     OnboardingComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    VendorComponent,
+    ConsultantComponent,
+    VendorsListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
     HttpClientModule,
     NgxDatatableModule,
     NgbModule,
-    NgSelectModule,
+    NgSelectModule
   ],
   providers: [ApiService,
     AuthGuard,

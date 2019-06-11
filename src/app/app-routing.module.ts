@@ -10,6 +10,8 @@ import {AuthGuard} from '../services/auth.guard';
 import {MainComponent} from './main/main.component';
 import {OnboardingComponent} from './onboarding/onboarding.component';
 import {PersonalComponent} from './personal/personal.component';
+import {VendorComponent} from './vendor/vendor.component';
+import {VendorsListComponent} from './vendors-list/vendors-list.component';
 
 const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
         {path: 'onboardings', component: OnboardingsComponent},
         {path: 'compliance', component: ComplianceComponent},
         {path: 'offboarding', component: OffboardingComponent},
+        {path: 'vendors', component: VendorComponent},
+        {path: 'vendors-list', component: VendorsListComponent},
       ]
     }
   ];

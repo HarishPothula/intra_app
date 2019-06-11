@@ -1,24 +1,18 @@
-<!--<aw-wizard>-->
-<!--  <aw-wizard-step stepTitle="Personal">-->
-    <div class="container container-fluid mt-5" *ngIf="next === false">
+<!-- <div class="container container-fluid mt-5" *ngIf="next === false">
         <app-personal #personalComponent class="mb-5" [onboardingInfo]="onboardingInfo" (onPersonalFormNext)="getNextEvent($event)"></app-personal>
     </div>
-<!--  </aw-wizard-step>-->
-<!--  <aw-wizard-step stepTitle="Onboarding" awOptionalStep>-->
     <div class="container container-fluid mt-5" *ngIf="next === true">
       <fieldset>
         <legend> Onboarding</legend>
         <app-onboarding #intraedgeOnboardingComponent class="mb-5"
                                   [onboardingInfo]="onboardingInfo" (onOnboardingsFormNext)="getOnBackEvent($event)"></app-onboarding>
       </fieldset>
-    </div>
-<!--  </aw-wizard-step>-->
-<!--</aw-wizard>-->
-<!--<button class="btn btn-primary" (click)="onExport()"> Export</button>-->
-<input class="form-control" type='file' (change)='convertFile(myInput)' id='fileInput' #myInput>
-<!--<div class="container-fluid border">-->
-<!--  {{JSONData}}-->
-<!--</div>-->
+    </div>-->
+<!--<input class="form-control" type='file' (change)='convertFile(myInput)' id='fileInput' #myInput>
+<div class="container-fluid border">
+  {{JSONData}}
+</div>-->
+ <app-consultant></app-consultant>
 <footer>
   <div class="container wpb_column vc_column_container vc_col-sm-12">
     <div class="vc_column-inner">

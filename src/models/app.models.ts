@@ -1,3 +1,10 @@
+import {UUID} from 'angular2-uuid';
+
+export const BooleanList = [
+  {id: true, value: 'Yes'},
+  {id: false, value: 'No'}
+];
+
 export class PersonalInformation {
   uuid: number;
   firstName: string;
@@ -56,7 +63,12 @@ export class Address {
   state: string;
   zip: number;
 }
-
+export class Audit {
+  createdBy: string;
+  createdOn: Date;
+  updatedBy: string;
+  updatedOn: Date;
+}
 export class Onboardinginfo {
   recordId: string;
   clientName: string;
@@ -73,4 +85,16 @@ export class User {
   firstName: string;
   lastName: string;
   token?: string;
+}
+export class Vendor {
+  record_id: UUID;
+  vendorName: string;
+  contactPerson: string;
+  contact: string;
+  email: string;
+  address: Address;
+  region: string;
+  scopeOfServices: string;
+  newSubmittal: boolean;
+  audit: Audit;
 }

@@ -88,7 +88,7 @@ public categeory = [
       const updatedDate = input.files[0].lastModifiedDate;
       console.log('file', file);
       console.log('updatedDate', updatedDate);
-      if (file === 'IntraEdge New Compliance Resource Report_Example.csv') {
+      // if (file === 'IntraEdge New Compliance Resource Report_Example.csv') {
         const reader = new FileReader();
 
         reader.readAsText(input.files[0]);
@@ -97,10 +97,10 @@ public categeory = [
           this.text = text;
           this.csvJSON(text);
         };
-      } else {
-        this.myInputVariable.nativeElement.value = '';
-        alert('not supported');
-      }
+      // } else {
+      //   this.myInputVariable.nativeElement.value = '';
+      //   alert('not supported');
+      // }
     }
   }
 
@@ -108,13 +108,13 @@ public categeory = [
     this.excel.exportAsExcelFile(this.dataToBeExported, 'ExportedFromAngularAPP');
   }
 
-  addRow(tableID) {
-    const table = document.getElementById('my-table-body');
-    const row = table.insertRow(0);
-    const cell1 = row.insertCell(0);
-    const cell2 = row.insertCell(1);
-  }
-  onDelete(row) {
-    console.log('roe', row);
-  }
+  // addRow(tableID) {
+  //   const table = document.getElementById('my-table-body');
+  //   const row = table.insertRow(0);
+  //   const cell1 = row.insertCell(0);
+  //   const cell2 = row.insertCell(1);
+  // }
+  // onDelete(row) {
+  //   console.log('roe', row);
+  // }
 }
