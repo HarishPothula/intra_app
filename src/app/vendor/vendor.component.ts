@@ -20,7 +20,7 @@ export class VendorComponent implements OnInit {
   public vendorInfo: any;
   public countriesList: any;
   private userName: string;
-  private record_id: any;
+  private recordId: any;
 
   constructor(private apiService: ApiService,
               private excel: ExcelService, private activatedRoute: ActivatedRoute) {
@@ -29,18 +29,11 @@ export class VendorComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.record_id = params['recordId'];
+      this.recordId = params['recordId'];
     });
-    if (this.record_id) {
-      this.apiService.getVendorById(this.record_id).subscribe(res => {
+    if (this.recordId) {
+      this.apiService.getVendorById(this.recordId).subscribe(res => {
         this.vendorInfo = res[0];
-        // this.vendorForm.value.street = res[0].street;
-        // this.vendorForm.setValue({
-        //   street: res[0].street,
-        //   city: res[0].city,
-        //   state: res[0].state,
-        //   zip: res[0].zip,
-        // });
       });
     }
     this.vendorInfo = new Vendor();
@@ -62,15 +55,22 @@ export class VendorComponent implements OnInit {
   }
 
   onSubmit(vendorInfo) {
-    const uuid = UUID.UUID();
-    vendorInfo.record_id = uuid;
-    vendorInfo.createdBy = 'Admin';
-    vendorInfo.createdOn = moment().format();
-    // const data = Object.assign(vendorInfo);
-    console.log(vendorInfo);
-    this.apiService.postVendorInfo(vendorInfo).subscribe(res => {
-      console.log(res);
-    });
+    if (!this.recordId) {
+      const uuid = UUID.UUID();
+      vendorInfo.record_id = uuid;
+      vendorInfo.createdBy = 'Admin';
+      vendorInfo.createdOn = moment().format();
+      console.log(vendorInfo);
+      this.apiService.postVendorInfo(vendorInfo).subscribe(res => {
+        console.log(res);
+      });
+    } else if (this.recordId) {
+      vendorInfo.updatedBy = 'Admin';
+      vendorInfo.updatedOn = moment().format();
+      this.apiService.postVendorInfo(vendorInfo).subscribe(res => {
+        console.log(res);
+      });
+    }
   }
 
   onDownload() {

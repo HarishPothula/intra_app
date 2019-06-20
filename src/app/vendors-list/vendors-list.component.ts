@@ -38,3 +38,7 @@ export class VendorsListComponent implements OnInit {
       this.excel.exportAsExcelFile(this.vendorsList, 'vendors');
   }
 }
+
+
+
+

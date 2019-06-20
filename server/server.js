@@ -48,7 +48,7 @@ app.post("/sendemail", cors(), (req, res) => {
     service: 'gmail',
     auth: {
       user: 'write2phreddy@gmail.com',
-      pass: 'Harish@276'
+      pass: '*****'
     },
     secure: false,
     tls: {rejectUnauthorized: false},
@@ -137,7 +137,19 @@ app.post('/vendorById', function (req, res) {
     }
   });
 });
-
+app.post('/updatevendorById', function (req, res) {
+  let sql = `UPDATE vendor SET address = 'Canyon 123' WHERE address = 'Valley 345'`;
+  connection.query(sql, req.body.record_id, (error, results, fields) => {
+    if (error){
+      return console.error(error.message);
+    }
+    else {
+      res.send(results);
+      res.end();
+      console.log('Vendor Row(s):', results.affectedRows);
+    }
+  });
+});
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
     cb(null, './uploads/')
