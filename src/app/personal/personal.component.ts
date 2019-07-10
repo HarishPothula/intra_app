@@ -11,6 +11,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PersonalComponent implements OnInit {
   @Input() onboardingInfo: any;
+  @Input() copyOfOnboardingInfo: any;
+  @Input() copyOfPersonalInfo: any;
+  @Input() copyOfPersonalAddress: any;
   @Output() public onPersonalFormNext = new EventEmitter();
   public initialForm: FormGroup;
   public personalForm: FormGroup;

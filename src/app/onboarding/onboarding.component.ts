@@ -4,7 +4,7 @@ import {IntraedgeOnboardingComponent} from '../intraedge-onboarding/intraedge-on
 import {ClientOnboardingComponent} from '../client-onboarding/client-onboarding.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
-import {ClientInformation, InteranalInformation} from '../../models/app.models';
+import {ClientInformation, InteranalInformation, EmployerInformation} from '../../models/app.models';
 import {UUID} from 'angular2-uuid';
 
 @Component({
@@ -14,6 +14,7 @@ import {UUID} from 'angular2-uuid';
 })
 export class OnboardingComponent implements OnInit {
   @Input() onboardingInfo: any;
+  @Input() copyOfOnboardingInfo: any;
   public intraEdgeForm: FormGroup;
   public clientForm: FormGroup;
   @ViewChild(IntraedgeOnboardingComponent) intraedgeOnboardingComponent: IntraedgeOnboardingComponent;
@@ -35,6 +36,7 @@ export class OnboardingComponent implements OnInit {
       this.onboardingInfo = this.apiService.onboardingData;
       this.onboardingInfo.internal = new InteranalInformation();
       this.onboardingInfo.client = new ClientInformation();
+      this.onboardingInfo.internal.employer.push(new EmployerInformation());
     } else {
       this.onboardingInfo = this.onboardingInfo;
     }
@@ -56,6 +58,7 @@ export class OnboardingComponent implements OnInit {
         state: new FormControl(''),
         zip: new FormControl('')
       }),
+      employerType: new FormControl(''),
       bgvstartDate: new FormControl(''),
       bgvendDate: new FormControl(''),
       drugTeststartDate: new FormControl(''),
@@ -85,6 +88,9 @@ export class OnboardingComponent implements OnInit {
         this.intraEdgeForm.get(['address', 'state']).updateValueAndValidity();
         this.intraEdgeForm.get(['address', 'zip']).setValidators(Validators.required);
         this.intraEdgeForm.get(['address', 'zip']).updateValueAndValidity();
+        this.intraEdgeForm.get('employerType').setValidators(Validators.required);
+        this.intraEdgeForm.get('employerType').updateValueAndValidity();
+
       } else {
         this.intraEdgeForm.get('companyName').clearValidators();
         this.intraEdgeForm.get('name').clearValidators();
@@ -96,6 +102,7 @@ export class OnboardingComponent implements OnInit {
         this.intraEdgeForm.get(['address', 'city']).clearValidators();
         this.intraEdgeForm.get(['address', 'state']).clearValidators();
         this.intraEdgeForm.get(['address', 'zip']).clearValidators();
+        this.intraEdgeForm.get('employerType').clearValidators();
       }
     });
     this.intraEdgeForm.get('offerStatus').valueChanges.subscribe((status) => {
@@ -155,6 +162,9 @@ export class OnboardingComponent implements OnInit {
     const uuid = UUID.UUID();
     this.onboardingInfo.recordId = uuid;
     console.log('info', this.onboardingInfo);
+    this.apiService.postConsultantInfo(this.onboardingInfo).subscribe(res => {
+      console.log(res);
+    });
     this.router.navigateByUrl('/app/compliance');
   }
 

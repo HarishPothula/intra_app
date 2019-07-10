@@ -19,20 +19,21 @@ export class PersonalInformation {
   i94date: string;
 }
 
-class EmployerInformation {
+export class EmployerInformation {
   companyName: string;
   name: string;
   ein: string;
   stateReg: string;
   phNo: string;
   email: string;
+  employerType: string;
   address: Address;
 }
 
 export class InteranalInformation {
   employmentType: string;
   offerStatus: string;
-  employer: EmployerInformation;
+  employer: EmployerInformation[] = [];
   bgvstartDate: string;
   bgvendDate: string;
   drugTeststartDate: string;

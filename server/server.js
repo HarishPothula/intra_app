@@ -43,6 +43,7 @@ app.set('port', port);
 const server = http.createServer(app);
 server.listen(port, () => console.log(`API running on localhost:${port}`));
 
+// Send an email start;
 app.post("/sendemail", cors(), (req, res) => {
   let transporter = nodeMailer.createTransport({
     service: 'gmail',
@@ -77,7 +78,9 @@ app.post("/sendemail", cors(), (req, res) => {
     }
   });
 });
+// Send an email end;
 
+// DB connectivity start;
 connection.connect(function (err) {
   if (!err) {
     console.log("Database is connected ... nn");
@@ -85,6 +88,9 @@ connection.connect(function (err) {
     console.log("Error connecting database ... nn");
   }
 });
+// DB connectivity End;
+
+// Start Vendors Service calls;
 app.post("/postVendorInfo", function (req, res) {
   const info = req.body;
   let stmt = `INSERT INTO vendor(vendorName,contactPerson,contact,email,region,scopeOfServices,newSubmittal,street,city,state,zip,record_id,createdBy,createdOn,updatedBy,updatedOn)  VALUES ?  `;
@@ -150,6 +156,9 @@ app.post('/updatevendorById', function (req, res) {
     }
   });
 });
+// End vendors service calls;
+
+// File Upload Starts;
 var storage = multer.diskStorage({ //multers disk storage settings
   destination: function (req, file, cb) {
     cb(null, './uploads/')
@@ -168,8 +177,39 @@ var upload = multer({ //multer settings
     callback(null, true);
   }
 }).single('file');
-/** API path that will upload the files */
+// File upload ends;
 
+
+// Consultant service calls start;
+
+app.post("/postConsultantInfo", function (req, res) {
+  const info = req.body;
+  let stmt = `INSERT INTO consultant(vendorName,contactPerson,contact,email,region,scopeOfServices,newSubmittal,street,city,state,zip,record_id,createdBy,createdOn,updatedBy,updatedOn)  VALUES ?  `;
+  let todos = [
+    [info.vendorName, info.contactPerson, info.contact, info.email, info.region.name,info.scopeOfServices, info.newSubmittal.value, info.address.street, info.address.city, info.address.state.name, info.address.zip, info.record_id, info.createdBy, info.createdOn, info.updatedBy, info.updatedOn],
+  ];
+  connection.query(stmt, [todos], (err, results, fields) => {
+    if (err) {
+      return console.error(err.message);
+    } else {
+      res.end();
+      console.log('Row inserted:' + results.affectedRows);
+    }
+  });
+});
+
+app.get('/getConsultantsInfo', function (req, res) {
+  let sql = `SELECT * FROM consultant`;
+  connection.query(sql, (error, results, fields) => {
+    res.send(results);
+    return res;
+    if (error) {
+      return console.error(error.message);
+    }
+  });
+});
+
+//Consultant service calls end;
 app.get('/', function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });

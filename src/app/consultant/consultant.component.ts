@@ -8,11 +8,30 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ConsultantComponent implements OnInit {
   public candidateForm: FormGroup;
-
+  public initialForm: FormGroup;
+  public clientsList = [{id: 1, name: 'American Express'}];
+  public accountManagersList = [
+    {id: 1, name: 'Dinesh Palaria'},
+    {id: 2, name: 'Raghu Marwaha'},
+    {id: 3, name: 'Kumar Subramaniam'},
+    {id: 4, name: 'Upendra B'},
+  ];
+  public recruitersList = [
+    {id: 1, name: 'Amit Patra'},
+    {id: 2, name: 'Smitha'},
+    {id: 3, name: 'Girish'},
+    {id: 4, name: 'Bhavana'},
+    {id: 4, name: 'Priyanka'},
+  ];
   constructor() {
   }
 
   ngOnInit() {
+    this.initialForm = new FormGroup({
+      clientName: new FormControl(null, Validators.required),
+      accountManager: new FormControl(null, Validators.required),
+      recruiter: new FormControl(null, Validators.required),
+    });
     this.candidateForm = new FormGroup({
       resourceId: new FormControl('', Validators.required),
       resourceFirstName: new FormControl('', Validators.required),
@@ -55,8 +74,9 @@ export class ConsultantComponent implements OnInit {
     });
   }
 
-  onSubmit(info) {
-    console.log(info);
+  onSubmit(value1, value2) {
+    const finalValue = Object.assign(value1, value2);
+    console.log(finalValue);
   }
 
 }

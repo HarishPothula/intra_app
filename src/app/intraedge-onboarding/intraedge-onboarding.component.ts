@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
 import {Router} from '@angular/router';
+import {BooleanList, EmployerInformation} from '../../models/app.models';
 
 @Component({
   selector: 'app-intraedge-onboarding',
@@ -23,6 +24,9 @@ export class IntraedgeOnboardingComponent implements OnInit {
     {id: 2, value: 'Not Accepted'},
     {id: 3, value: 'Rejected'},
   ];
+  public booleanList = BooleanList;
+  public employerArray = [{}];
+  public employerType$: any;
 
   constructor(private apiService: ApiService,
               private router: Router) {
@@ -32,6 +36,7 @@ export class IntraedgeOnboardingComponent implements OnInit {
     this.apiService.getStates().subscribe((res: any[]) => {
       this.statesList = res;
     });
+    this.employerType$ = false;
   }
 
   onStatus(id) {
@@ -49,5 +54,23 @@ export class IntraedgeOnboardingComponent implements OnInit {
         console.log('res', res);
       });
     }
+  }
+
+  onEmployerType(value) {
+    const isTrueCheck = [];
+    this.onboardingInfo.internal.employer.forEach(res => {
+      if (res.employerType === true) {
+        isTrueCheck.push(true);
+      }
+    });
+    if (isTrueCheck.includes(true)) {
+      this.employerType$ = true;
+    } else {
+      this.employerType$ = false;
+    }
+  }
+
+  onAddEmployer() {
+    this.onboardingInfo.internal.employer.push(new EmployerInformation());
   }
 }

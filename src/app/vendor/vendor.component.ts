@@ -21,6 +21,7 @@ export class VendorComponent implements OnInit {
   public countriesList: any;
   private userName: string;
   private recordId: any;
+  public unmodifiedData: any;
 
   constructor(private apiService: ApiService,
               private excel: ExcelService, private activatedRoute: ActivatedRoute) {
@@ -34,6 +35,7 @@ export class VendorComponent implements OnInit {
     if (this.recordId) {
       this.apiService.getVendorById(this.recordId).subscribe(res => {
         this.vendorInfo = res[0];
+        this.unmodifiedData = {...this.vendorInfo};
       });
     }
     this.vendorInfo = new Vendor();
@@ -74,7 +76,7 @@ export class VendorComponent implements OnInit {
   }
 
   onDownload() {
-    this.apiService.getVendorInfo().subscribe(res => {
+    this.apiService.getVendorInfo().subscribe((res: any) => {
       this.excel.exportAsExcelFile(res, 'vendors');
     });
   }

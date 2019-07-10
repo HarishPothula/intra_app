@@ -10,6 +10,9 @@
     </div>
     <div class="col-6">
       <input type="text" formControlName="vendorName" class="form-control" [(ngModel)]="vendorInfo.vendorName">
+      <small *ngIf="recordId && vendorForm.value.vendorName !== (unmodifiedData && unmodifiedData.vendorName)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.vendorName}}
+      </small>
     </div>
   </div>
   <div class="row mb-3 mt-4">
@@ -20,6 +23,9 @@
     </div>
     <div class="col-6">
       <input type="text" formControlName="contactPerson" class="form-control" [(ngModel)]="vendorInfo.contactPerson">
+      <small *ngIf="recordId && vendorForm.value.contactPerson !== (unmodifiedData && unmodifiedData.contactPerson)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.contactPerson}}
+      </small>
     </div>
   </div>
   <div class="row mb-3 mt-4">
@@ -30,6 +36,9 @@
     </div>
     <div class="col-6">
       <input type="number" formControlName="contact" class="form-control" [(ngModel)]="vendorInfo.contact">
+      <small *ngIf="recordId && vendorForm.value.contact !== (unmodifiedData && unmodifiedData.contact)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.contact}}
+      </small>
     </div>
   </div>
   <div class="row mb-3 mt-4">
@@ -41,6 +50,9 @@
     <div class="col-6">
       <input type="text" formControlName="email" class="form-control" [(ngModel)]="vendorInfo.email"
              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+      <small *ngIf="recordId && vendorForm.value.email !== (unmodifiedData && unmodifiedData.email)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.email}}
+      </small>
     </div>
   </div>
   <div class="row mb-3 mt-4">
@@ -56,6 +68,9 @@
                  placeholder="Select Country"
                  [(ngModel)]="vendorInfo.region"
       (change)="onCountry($event)"></ng-select>
+      <small *ngIf="recordId && vendorForm.value.region !== (unmodifiedData && unmodifiedData.region)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.region}}
+      </small>
     </div>
   </div>
   <div>
@@ -69,6 +84,9 @@
         </div>
         <div class="col-6">
           <input type="text" formControlName="street" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.street) || vendorInfo.street">
+          <small *ngIf="recordId && vendorForm.value.street !== (unmodifiedData && unmodifiedData.street)" class="text-info">
+            Old value was -{{unmodifiedData && unmodifiedData.street}}
+          </small>
         </div>
       </div>
       <div class="row mb-3">
@@ -79,6 +97,9 @@
         </div>
         <div class="col-6">
           <input type="text" formControlName="city" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.city) || vendorInfo.city">
+          <small *ngIf="recordId && vendorForm.value.city !== (unmodifiedData && unmodifiedData.city)" class="text-info">
+            Old value was -{{unmodifiedData && unmodifiedData.city}}
+          </small>
         </div>
       </div>
       <div class="row mb-3">
@@ -93,6 +114,9 @@
                      bindLabel="name"
                      placeholder="Select State"
                      [(ngModel)]="(vendorInfo.address && vendorInfo.address.state) || vendorInfo.state"></ng-select>
+          <small *ngIf="recordId && vendorForm.value.state !== (unmodifiedData && unmodifiedData.state)" class="text-info">
+            Old value was -{{unmodifiedData && unmodifiedData.state}}
+          </small>
         </div>
       </div>
       <div class="row mb-3">
@@ -103,6 +127,9 @@
         </div>
         <div class="col-6">
           <input type="number" formControlName="zip" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.zip) || vendorInfo.zip">
+          <small *ngIf="recordId && vendorForm.value.zip !== (unmodifiedData && unmodifiedData.zip)" class="text-info">
+            Old value was -{{unmodifiedData && unmodifiedData.zip}}
+          </small>
         </div>
       </div>
     </fieldset>
@@ -115,6 +142,9 @@
     </div>
     <div class="col-6">
       <input type="text" formControlName="scopeOfServices" class="form-control" [(ngModel)]="vendorInfo.scopeOfServices">
+      <small *ngIf="recordId && vendorForm.value.scopeOfServices !== (unmodifiedData && unmodifiedData.scopeOfServices)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.scopeOfServices}}
+      </small>
     </div>
   </div>
   <div class="row mb-3">
@@ -129,6 +159,9 @@
                  bindLabel="value"
                  placeholder="Select New Submittal"
                  [(ngModel)]="vendorInfo.newSubmittal"></ng-select>
+      <small *ngIf="recordId && vendorForm.value.newSubmittal !== (unmodifiedData && unmodifiedData.newSubmittal)" class="text-info">
+        Old value was -{{unmodifiedData && unmodifiedData.newSubmittal}}
+      </small>
     </div>
   </div>
   <div class="float-right">
@@ -137,4 +170,6 @@
 </form>
 
 </div>
+
+
 

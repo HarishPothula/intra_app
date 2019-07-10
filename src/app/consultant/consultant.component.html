@@ -1,383 +1,433 @@
 <div class="container container-fluid">
-  <form [formGroup]="candidateForm">
-    <div class="row mb-3 mt-4">
+  <form [formGroup]="initialForm">
+    <div class="row mb-3">
       <div class="col-3">
         <label required>
-          Resource ID:
+          Client:
         </label>
       </div>
       <div class="col-6">
-        <input type="text" formControlName="resourceId" class="form-control">
+        <ng-select formControlName="clientName" #clientName
+                   [items]="clientsList"
+                   bindLabel="name"
+                   placeholder="Select Client"></ng-select>
       </div>
     </div>
-    <div class="row mb-3 mt-4">
+    <div class="row mb-3">
       <div class="col-3">
         <label required>
-          Resource First Name:
+          Account Manager:
         </label>
       </div>
       <div class="col-6">
-        <input type="text" formControlName="resourceFirstName" class="form-control">
+        <ng-select formControlName="accountManager"
+                   [items]="accountManagersList"
+                   bindLabel="name"
+                   placeholder="Select Account Manager"></ng-select>
       </div>
     </div>
-    <div class="row mb-3 mt-4">
+    <div class="row mb-3">
       <div class="col-3">
         <label required>
-          Resource Middle Name:
+          Recruiter:
         </label>
       </div>
       <div class="col-6">
-        <input type="text" formControlName="resourceMiddleName" class="form-control">
+        <ng-select formControlName="recruiter"
+                   [items]="recruitersList"
+                   bindLabel="name"
+                   placeholder="Select Recruiter"></ng-select>
       </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Location Description(Should be DropDown):
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="resourceLastName" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Location Address 1:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="location" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Location City:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="city" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Location State:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="state" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Location Country:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="country" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Leader Level 3:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="leaderLevel3" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Leader Level 5:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="leaderLevel5" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Leader Level 6:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="leaderLevel6" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Normalized Vendor:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="normalizedVendor" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Resource Classification(Should be a dropdown):
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="resourceClassification" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Employee/Sub-Contractor (Dropdown):
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="employeeOrSubCon" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Sub-Contractor Company Name:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="subContractorCompany" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Resource Status(Dropdown):
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="resourceStatus" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Start Date:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="date" formControlName="startDate" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Notification Date Resource Leaving:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="date" formControlName="notificationdateResourceLeaving" class="form-control">
-      </div>
-    </div><div class="row mb-3 mt-4">
-    <div class="col-3">
-      <label required>
-        Departure Date:
-      </label>
-    </div>
-    <div class="col-6">
-      <input type="date" formControlName="departureDate" class="form-control">
-    </div>
-  </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Defined as Key Personnel:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="definedAsKeyPersonnel" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Defined as Critical Resource:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="definedAsCriticalresource" class="form-control">
-      </div>
-    </div>
-   <div class="row mb-3 mt-4">
-    <div class="col-3">
-      <label required>
-        Non T&M (On-Shore or Off-Shore):
-      </label>
-    </div>
-    <div class="col-6">
-      <input type="text" formControlName="onShoreOffShore" class="form-control">
-    </div>
-  </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Non T&M (On-Site or Off-Site):
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="onSiteOffSite" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Project ID:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="projectId" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Role Title/Job Description:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="role" class="form-control">
-      </div>
-    </div><div class="row mb-3 mt-4">
-    <div class="col-3">
-      <label required>
-        Premium Technology/Skillset (if applicable)(Dropdown with Multiselect):
-      </label>
-    </div>
-    <div class="col-6">
-      <input type="text" formControlName="premiumTechnology" class="form-control">
-    </div>
-  </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          PO/SOW Number:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="poNumber" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          ADS ID:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="adsId" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          AMEX Laptop / Desktop Asset Number :
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="laptopNo" class="form-control">
-      </div>
-    </div><div class="row mb-3 mt-4">
-    <div class="col-3">
-      <label required>
-        Resource Visa Status :
-      </label>
-    </div>
-    <div class="col-6">
-      <input type="text" formControlName="visaStatus" class="form-control">
-    </div>
-  </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Visa Expiration Date:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="date" formControlName="visaexpiration" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Background Completion End Date:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="date" formControlName="bgvCompletionEndDate" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Commodity:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="commodity" class="form-control">
-      </div>
-    </div><div class="row mb-3 mt-4">
-    <div class="col-3">
-      <label required>
-        New Resource Expected Rate:
-      </label>
-    </div>
-    <div class="col-6">
-      <input type="text" formControlName="newResourceExpectedRate" class="form-control">
-    </div>
-  </div>
-
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          New Resource Assignment period (e.g.: 3 months) :
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="assignmentPeriod" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          New Resource Rate Exception:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="resouceRateException" class="form-control">
-      </div>
-    </div>
-    <div class="row mb-3 mt-4">
-      <div class="col-3">
-        <label required>
-          Commentary:
-        </label>
-      </div>
-      <div class="col-6">
-        <input type="text" formControlName="commentary" class="form-control">
-      </div>
-    </div><div class="row mb-3 mt-4">
-    <div class="col-3">
-      <label required>
-        Misc.:
-      </label>
-    </div>
-    <div class="col-6">
-      <input type="text" formControlName="misc" class="form-control">
-    </div>
-  </div>
-    <div class="float-right">
-      <button class="btn btn-primary" (click)="onSubmit(candidateForm.value)" [disabled]="candidateForm.invalid">Submit</button>
     </div>
   </form>
+  <div *ngIf="initialForm.valid">
+    <form [formGroup]="candidateForm">
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Resource ID:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resourceId" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Resource First Name:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resourceFirstName" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Resource Middle Name:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resourceMiddleName" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Location Description(Should be DropDown):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resourceLastName" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Location Address 1:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="location" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Location City:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="city" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Location State:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="state" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Location Country:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="country" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Leader Level 3:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="leaderLevel3" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Leader Level 5:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="leaderLevel5" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Leader Level 6:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="leaderLevel6" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Normalized Vendor:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="normalizedVendor" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Resource Classification(Should be a dropdown):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resourceClassification" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Employee/Sub-Contractor (Dropdown):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="employeeOrSubCon" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Sub-Contractor Company Name:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="subContractorCompany" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Resource Status(Dropdown):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resourceStatus" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Start Date:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="date" formControlName="startDate" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Notification Date Resource Leaving:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="date" formControlName="notificationdateResourceLeaving" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Departure Date:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="date" formControlName="departureDate" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Defined as Key Personnel:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="definedAsKeyPersonnel" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Defined as Critical Resource:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="definedAsCriticalresource" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Non T&M (On-Shore or Off-Shore):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="onShoreOffShore" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Non T&M (On-Site or Off-Site):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="onSiteOffSite" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Project ID:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="projectId" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Role Title/Job Description:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="role" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Premium Technology/Skillset (if applicable)(Dropdown with Multiselect):
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="premiumTechnology" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            PO/SOW Number:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="poNumber" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            ADS ID:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="adsId" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            AMEX Laptop / Desktop Asset Number :
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="laptopNo" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Resource Visa Status :
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="visaStatus" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Visa Expiration Date:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="date" formControlName="visaexpiration" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Background Completion End Date:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="date" formControlName="bgvCompletionEndDate" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Commodity:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="commodity" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            New Resource Expected Rate:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="newResourceExpectedRate" class="form-control">
+        </div>
+      </div>
+
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            New Resource Assignment period (e.g.: 3 months) :
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="assignmentPeriod" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            New Resource Rate Exception:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="resouceRateException" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Commentary:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="commentary" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3 mt-4">
+        <div class="col-3">
+          <label required>
+            Misc.:
+          </label>
+        </div>
+        <div class="col-6">
+          <input type="text" formControlName="misc" class="form-control">
+        </div>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-primary" (click)="onSubmit(initialForm.value, candidateForm.value)" [disabled]="candidateForm.invalid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

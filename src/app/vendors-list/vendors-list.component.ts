@@ -19,6 +19,7 @@ export class VendorsListComponent implements OnInit {
   ngOnInit() {
     this.getVendors();
   }
+
   getVendors() {
     this.apiService.getVendorInfo().subscribe(res => {
       this.vendorsList = res;
@@ -34,8 +35,20 @@ export class VendorsListComponent implements OnInit {
   onEdit(row) {
     this.router.navigate(['/app/vendors'], {queryParams: {recordId: row.record_id}});
   }
+
   onDownload() {
-      this.excel.exportAsExcelFile(this.vendorsList, 'vendors');
+    const parsedVendorList = [];
+    this.vendorsList.forEach(res => {
+      const parsedVendor = {
+        'Vendor Name': res.vendorName,
+        'Contact Person': res.contactPerson,
+        Contact: res.contact,
+        'e-mail': res.email,
+        Address: res.street + ',' + res.city + ',' + res.state + ',' + res.zip,
+      };
+      parsedVendorList.push(parsedVendor);
+    });
+    this.excel.exportAsExcelFile(parsedVendorList, 'List Of Vendors');
   }
 }
 

@@ -12,6 +12,7 @@
                  bindLabel="name"
                  placeholder="Select Client"
                  [(ngModel)]="onboardingInfo.clientName"></ng-select>
+
     </div>
   </div>
   <div class="row mb-3">
@@ -26,6 +27,9 @@
                  bindLabel="name"
                  placeholder="Select Account Manager"
                  [(ngModel)]="onboardingInfo.accountManager"></ng-select>
+      <small *ngIf="recordId && initialForm.value.accountManager !== (copyOfOnboardingInfo && copyOfOnboardingInfo.accountManager)" class="text-info">
+        Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.accountManager.name}}
+      </small>
     </div>
   </div>
   <div class="row mb-3">
@@ -40,6 +44,9 @@
                  bindLabel="name"
                  placeholder="Select Recruiter"
                  [(ngModel)]="onboardingInfo.recruiter"></ng-select>
+      <small *ngIf="recordId && initialForm.value.recruiter !== (copyOfOnboardingInfo && copyOfOnboardingInfo.recruiter)" class="text-info">
+        Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.recruiter.name}}
+      </small>
     </div>
   </div>
 </form>
@@ -55,6 +62,9 @@
       <div class="col-6">
         <input type="text" formControlName="uuid" class="form-control"
                [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.uuid" [disabled]="recordId">
+        <small *ngIf="recordId && personalForm.value.uuid !== (copyOfPersonalInfo && copyOfPersonalInfo.uuid)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.uuid}}
+        </small>
       </div>
     </div>
     <div class="row mb-3 mt-4">
@@ -65,6 +75,9 @@
       </div>
       <div class="col-6">
         <input type="text" formControlName="firstName" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.firstName">
+        <small *ngIf="recordId && personalForm.value.firstName !== (copyOfPersonalInfo && copyOfPersonalInfo.firstName)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.firstName}}
+        </small>
       </div>
     </div>
     <div class="row mb-3">
@@ -75,6 +88,9 @@
       </div>
       <div class="col-6">
         <input type="text" formControlName="lastName" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.lastName">
+        <small *ngIf="recordId && personalForm.value.lastName !== (copyOfPersonalInfo && copyOfPersonalInfo.lastName)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.lastName}}
+        </small>
       </div>
     </div>
     <div class="row mb-3">
@@ -85,6 +101,9 @@
       </div>
       <div class="col-6">
         <input type="date" formControlName="dob" placeholder="mm/dd/yyyy" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.dob">
+        <small *ngIf="recordId && personalForm.value.dob !== (copyOfPersonalInfo && copyOfPersonalInfo.dob)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.dob}}
+        </small>
       </div>
     </div>
     <div class="row mb-3">
@@ -95,6 +114,9 @@
       </div>
       <div class="col-6">
         <input type="number" formControlName="ssn" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.ssn">
+        <small *ngIf="recordId && personalForm.value.ssn !== (copyOfPersonalInfo && copyOfPersonalInfo.ssn)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.ssn}}
+        </small>
       </div>
     </div>
     <div class="row mb-3">
@@ -105,6 +127,9 @@
       </div>
       <div class="col-6">
         <input type="number" formControlName="phNo" pattern="^((\\+91-?)|0)?[0-9]{10}$" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.phNo">
+        <small *ngIf="recordId && personalForm.value.phNo !== (copyOfPersonalInfo && copyOfPersonalInfo.phNo)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.phNo}}
+        </small>
       </div>
     </div>
     <div class="row mb-3">
@@ -116,6 +141,9 @@
       <div class="col-6">
         <input type="email" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.email">
+        <small *ngIf="recordId && personalForm.value.email !== (copyOfPersonalInfo && copyOfPersonalInfo.email)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.email}}
+        </small>
       </div>
     </div>
     <div formGroupName="address">
@@ -129,6 +157,9 @@
           </div>
           <div class="col-6">
             <input type="text" formControlName="street" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.street">
+            <small *ngIf="recordId && (onboardingInfo.personal && onboardingInfo.personal.address.street) !== (copyOfPersonalAddress && copyOfPersonalAddress.street)" class="text-info">
+              Old value was -{{copyOfPersonalAddress && copyOfPersonalAddress.street}}
+            </small>
           </div>
         </div>
         <div class="row mb-3">
@@ -139,6 +170,9 @@
           </div>
           <div class="col-6">
             <input type="text" formControlName="city" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.city">
+            <small *ngIf="recordId && (onboardingInfo.personal && onboardingInfo.personal.address.city) !== (copyOfPersonalAddress && copyOfPersonalAddress.city)" class="text-info">
+              Old value was -{{copyOfPersonalAddress && copyOfPersonalAddress.city}}
+            </small>
           </div>
         </div>
         <div class="row mb-3">
@@ -153,9 +187,9 @@
                        bindLabel="name"
                        placeholder="Select State"
                        [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.state"></ng-select>
-<!--            <select formControlName="state" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.state">-->
-<!--              <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>-->
-<!--            </select>-->
+            <small *ngIf="recordId && (onboardingInfo.personal && onboardingInfo.personal.address.state) !== (copyOfPersonalAddress && copyOfPersonalAddress.state)" class="text-info">
+              Old value was -{{copyOfPersonalAddress && copyOfPersonalAddress.state}}
+            </small>
           </div>
         </div>
         <div class="row mb-3">
@@ -166,6 +200,9 @@
           </div>
           <div class="col-6">
             <input type="text" formControlName="zip" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.address.zip">
+            <small *ngIf="recordId && (onboardingInfo.personal && onboardingInfo.personal.address.zip) !== (copyOfPersonalInfo && copyOfPersonalAddress.zip)" class="text-info">
+              Old value was -{{copyOfPersonalAddress && copyOfPersonalAddress.zip}}
+            </small>
           </div>
         </div>
       </fieldset>
@@ -182,6 +219,9 @@
                    bindLabel="type"
                    placeholder="Select Visa Type"
                    [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.visa" #visa></ng-select>
+        <small *ngIf="recordId && personalForm.value.visa !== (copyOfPersonalInfo && copyOfPersonalInfo.visa)" class="text-info">
+          Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.visa}}
+        </small>
       </div>
     </div>
     <div *ngIf="onboardingInfo.personal.visa && (onboardingInfo.personal.visa.id != 1 && onboardingInfo.personal.visa.id != 2)">
@@ -193,6 +233,9 @@
         </div>
         <div class="col-3">
           <input type="date" formControlName="expiration" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.expiration">
+          <small *ngIf="recordId && personalForm.value.expiration !== (copyOfPersonalInfo && copyOfPersonalInfo.expiration)" class="text-info">
+            Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.expiration}}
+          </small>
         </div>
       </div>
       <div class="row">
@@ -203,12 +246,16 @@
         </div>
         <div class="col-3">
           <input type="date" formControlName="i94date" class="form-control" [(ngModel)]="onboardingInfo.personal && onboardingInfo.personal.i94date">
+          <small *ngIf="recordId && personalForm.value.i94date !== (copyOfPersonalInfo && copyOfPersonalInfo.i94date)" class="text-info">
+            Old value was -{{copyOfPersonalInfo && copyOfPersonalInfo.i94date}}
+          </small>
         </div>
       </div>
     </div>
   </form>
 </fieldset>
 <div class="float-right">
-  <button type="button" class="btn btn-primary" (click)="onNext()" [disabled]="initialForm.invalid || personalForm.invalid">Next</button>
+  <button type="button" class="btn btn-primary" (click)="onNext()" >Next</button>
+<!--  [disabled]="initialForm.invalid || personalForm.invalid"-->
 </div>
 </div>

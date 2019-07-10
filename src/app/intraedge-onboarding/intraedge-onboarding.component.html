@@ -12,6 +12,9 @@
                    bindLabel="name"
                    placeholder="Select Employment Type"
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employmentType" #empType></ng-select>
+       <!-- <small *ngIf="recordId && vendorForm.value.vendorName !== (unmodifiedData && unmodifiedData.vendorName)" class="text-info">
+          Old value was -{{unmodifiedData && unmodifiedData.vendorName}}
+        </small>-->
       </div>
     </div>
     <div class="row mb-3">
@@ -30,128 +33,148 @@
     </div>
     <div *ngIf="(onboardingInfo.internal.employmentType && onboardingInfo.internal.employmentType.id == 3) &&
 (onboardingInfo.internal.offerStatus && onboardingInfo.internal.offerStatus.id == 1)">
-      <fieldset>
-        <legend>Employer Information</legend>
-        <div class="row mb-3">
-          <div class="col-4">
-            <label required>
-              Company Name:
-            </label>
-          </div>
-          <div class="col-6">
-            <input type="text" formControlName="companyName" class="form-control"
-                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.companyName">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-4">
-            <label required>
-              EIN:
-            </label>
-          </div>
-          <div class="col-6">
-            <input type="number" formControlName="ein" class="form-control"
-                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer &&  onboardingInfo.internal.employer.ein">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-4">
-            <label required>
-              State of Registration:
-            </label>
-          </div>
-          <div class="col-6">
-            <input type="text" formControlName="stateReg" class="form-control"
-                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.stateReg">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-4">
-            <label required>
-              Contact Person Name:
-            </label>
-          </div>
-          <div class="col-6">
-            <input type="text" formControlName="name" class="form-control"
-                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.name">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-4">
-            <label required>
-              Phone Number:
-            </label>
-          </div>
-          <div class="col-6">
-            <input type="number" formControlName="phNo" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
-                   class="form-control"
-                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.phNo">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-4">
-            <label required>
-              e-mail:
-            </label>
-          </div>
-          <div class="col-6">
-            <input type="text" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                   class="form-control"
-                   [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.email">
-          </div>
-        </div>
-        <div formGroupName="address">
-          <fieldset>
-            <legend>Address</legend>
-            <div class="row mb-3">
-              <div class="col-4">
-                <label required>
-                  Street:
-                </label>
-              </div>
-              <div class="col-6">
-                <input type="text" formControlName="street" class="form-control"
-                       [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.street">
-              </div>
+      <div *ngFor="let employer of onboardingInfo.internal.employer" class="card mt-2">
+        <fieldset class="ml-3">
+          <legend>Employer Information</legend>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                Company Name:
+              </label>
             </div>
-            <div class="row mb-3">
-              <div class="col-4">
-                <label required>
-                  City:
-                </label>
-              </div>
-              <div class="col-6">
-                <input type="text" formControlName="city" class="form-control"
-                       [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.city">
-              </div>
+            <div class="col-6">
+              <input type="text" formControlName="companyName" class="form-control"
+                     [(ngModel)]="employer.companyName">
             </div>
-            <div class="row mb-3">
-              <div class="col-4">
-                <label required>
-                  State:
-                </label>
-              </div>
-              <div class="col-6">
-                <select formControlName="state"
-                        [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.state">
-                  <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>
-                </select>
-              </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                EIN:
+              </label>
             </div>
-            <div class="row mb-3">
-              <div class="col-4">
-                <label required>
-                  Zip Code:
-                </label>
-              </div>
-              <div class="col-6">
-                <input type="text" formControlName="zip" class="form-control"
-                       [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employer && onboardingInfo.internal.employer.address.zip">
-              </div>
+            <div class="col-6">
+              <input type="number" formControlName="ein" class="form-control"
+                     [(ngModel)]="employer.ein">
             </div>
-          </fieldset>
-        </div>
-      </fieldset>
+          </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                State of Registration:
+              </label>
+            </div>
+            <div class="col-6">
+              <input type="text" formControlName="stateReg" class="form-control"
+                     [(ngModel)]="employer.stateReg">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                Contact Person Name:
+              </label>
+            </div>
+            <div class="col-6">
+              <input type="text" formControlName="name" class="form-control"
+                     [(ngModel)]="employer.name">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                Phone Number:
+              </label>
+            </div>
+            <div class="col-6">
+              <input type="number" formControlName="phNo" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                     class="form-control"
+                     [(ngModel)]="employer.phNo">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                e-mail:
+              </label>
+            </div>
+            <div class="col-6">
+              <input type="text" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                     class="form-control"
+                     [(ngModel)]="employer.email">
+            </div>
+          </div>
+          <div formGroupName="address">
+            <fieldset>
+              <legend>Address</legend>
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label required>
+                    Street:
+                  </label>
+                </div>
+                <div class="col-6">
+                  <input type="text" formControlName="street" class="form-control"
+                         [(ngModel)]="employer.address && employer.address.street">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label required>
+                    City:
+                  </label>
+                </div>
+                <div class="col-6">
+                  <input type="text" formControlName="city" class="form-control"
+                         [(ngModel)]="employer.address && employer.address.city">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label required>
+                    State:
+                  </label>
+                </div>
+                <div class="col-6">
+                  <select formControlName="state"
+                          [(ngModel)]="employer.address && employer.address.state">
+                    <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label required>
+                    Zip Code:
+                  </label>
+                </div>
+                <div class="col-6">
+                  <input type="text" formControlName="zip" class="form-control"
+                         [(ngModel)]="employer.address && employer.address.zip">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label required>
+                Primary Employer:
+              </label>
+            </div>
+            <div class="col-6">
+              <select formControlName="employerType" #employerType$$
+                      [(ngModel)]="employer.employerType" (change)="onEmployerType(employerType$$.value)">
+                <option *ngFor="let value of booleanList" [ngValue]="value.id">{{value.value}}</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="row" *ngIf="employerType$ === false">
+        <button class="btn btn-link" (click)="onAddEmployer()">
+          Add Employer
+        </button>
+      </div>
     </div>
     <div *ngIf="onboardingInfo.internal.offerStatus && onboardingInfo.internal.offerStatus.id == 1">
       <div class="row mb-3">

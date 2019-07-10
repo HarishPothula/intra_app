@@ -40,8 +40,18 @@ export class ApiService {
     const id$ = {record_id: id};
     return this.http.post('http://localhost:3000/vendorById', id$);
   }
+
   updateVendorById(id) {
     const id$ = {record_id: id};
     return this.http.post('http://localhost:3000/updatevendorById', id$);
   }
+
+  postConsultantInfo(info) {
+    return this.http.post('http://localhost:3000/postConsultantInfo', info);
+  }
+
+  getConsultantsInfo() {
+    return this.http.get('http://localhost:3000/getConsultantsInfo');
+  }
+
 }

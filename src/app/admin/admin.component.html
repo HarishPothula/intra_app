@@ -1,18 +1,22 @@
-<!-- <div class="container container-fluid mt-5" *ngIf="next === false">
-        <app-personal #personalComponent class="mb-5" [onboardingInfo]="onboardingInfo" (onPersonalFormNext)="getNextEvent($event)"></app-personal>
+ <div class="container container-fluid mt-5" *ngIf="next === false">
+        <app-personal #personalComponent class="mb-5" [onboardingInfo]="onboardingInfo" (onPersonalFormNext)="getNextEvent($event)"
+                      [copyOfOnboardingInfo]="copyOfOnboardingInfo"
+        [copyOfPersonalInfo]="copyOfPersonalInfo"
+                      [copyOfPersonalAddress]="copyOfPersonalAddress"></app-personal>
     </div>
     <div class="container container-fluid mt-5" *ngIf="next === true">
       <fieldset>
         <legend> Onboarding</legend>
         <app-onboarding #intraedgeOnboardingComponent class="mb-5"
-                                  [onboardingInfo]="onboardingInfo" (onOnboardingsFormNext)="getOnBackEvent($event)"></app-onboarding>
+                                  [onboardingInfo]="onboardingInfo" (onOnboardingsFormNext)="getOnBackEvent($event)"
+                        [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-onboarding>
       </fieldset>
-    </div>-->
-<!--<input class="form-control" type='file' (change)='convertFile(myInput)' id='fileInput' #myInput>
-<div class="container-fluid border">
-  {{JSONData}}
-</div>-->
- <app-consultant></app-consultant>
+    </div>
+<!--<input class="form-control" type='file' (change)='convertFile(myInput)' id='fileInput' #myInput>-->
+<!--<div class="container-fluid border">-->
+<!--  {{JSONData}}-->
+<!--</div>-->
+<!-- <app-consultant></app-consultant>-->
 <footer>
   <div class="container wpb_column vc_column_container vc_col-sm-12">
     <div class="vc_column-inner">

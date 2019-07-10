@@ -31,6 +31,9 @@ public categeory = [
   {id: 3, cat: 'Category 3'},
   {id: 4, cat: 'Category 4'},
 ];
+public copyOfOnboardingInfo: any;
+public copyOfPersonalInfo: any;
+public copyOfPersonalAddress: any;
   constructor(private excel: ExcelService,
               private activatedRoute: ActivatedRoute,
               private apiService: ApiService) {
@@ -45,9 +48,13 @@ public categeory = [
     if (this.record_id) {
       this.apiService.getOnboadingDataById(this.record_id).subscribe((res: any[]) => {
         this.onboardingInfo = res;
+        this.copyOfOnboardingInfo = {...this.onboardingInfo};
+        this.copyOfPersonalInfo = {...res.personal};
+        this.copyOfPersonalAddress = {...res.personal.address};
       });
     } else {
       this.onboardingInfo = new Onboardinginfo();
+      this.copyOfOnboardingInfo = {...this.onboardingInfo};
     }
   }
 
