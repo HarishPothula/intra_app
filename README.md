@@ -1,7 +1,14 @@
 # IntraegdeApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+# Local Environment setup
+On a command line/terminal go to the directory where you want to clone this project and then follow the steps below.
 
+* Run `git clone https://github.com/HarishPothula/intra_app` this should take a while and pull the project to your local directory.
+* Run `cd intra_app` to get into project root level.
+* Run `npm install` or `npm i` to install all the required dependencies.
+* Now start the application using `ng serve` this will start your application on`localhost://4200`.
+* To start node server for Node APi `cd server` -> `node server.js` this starts and runs node api.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
