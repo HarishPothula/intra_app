@@ -13,7 +13,7 @@ export class PersonalInformation {
   ssn: number;
   phNo: number;
   email: string;
-  address = Address;
+  address = {};
   visa: string;
   expiration: string;
   i94date: string;
@@ -93,7 +93,7 @@ export class Vendor {
   contactPerson: string;
   contact: string;
   email: string;
-  address: Address;
+  address: Address[] = [];
   region: string;
   scopeOfServices: string;
   newSubmittal: boolean;

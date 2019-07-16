@@ -3,14 +3,14 @@
   <ngb-tab title="Intraedge">
     <ng-template ngbTabContent>
       <form [formGroup]="intraEdgeForm">
-      <app-intraedge-onboarding [onboardingInfo]="onboardingInfo" #intraedgeOnboardingComponent [parentFormGroup]="intraEdgeForm"></app-intraedge-onboarding>
+      <app-intraedge-onboarding [onboardingInfo]="onboardingInfo" #intraedgeOnboardingComponent [parentFormGroup]="intraEdgeForm" [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-intraedge-onboarding>
       </form>
     </ng-template>
   </ngb-tab>
   <ngb-tab title="American Express">
     <ng-template ngbTabContent>
       <form [formGroup]="clientForm">
-      <app-client-onboarding [onboardingInfo]="onboardingInfo" #clientOnboardingComponent  [parentFormGroup]="clientForm" ></app-client-onboarding>
+      <app-client-onboarding [onboardingInfo]="onboardingInfo" #clientOnboardingComponent  [parentFormGroup]="clientForm" [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-client-onboarding>
       </form>
     </ng-template>
   </ngb-tab>

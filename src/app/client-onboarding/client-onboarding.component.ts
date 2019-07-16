@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-client-onboarding',
@@ -9,6 +10,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class ClientOnboardingComponent implements OnInit {
   @Input() onboardingInfo: any;
   @Input() parentFormGroup: FormGroup;
+  @Input() copyOfOnboardingInfo: any;
   public sowTypes = [
     {id: 1, type: 'Create New'},
     {id: 2, type: 'Ammend Existing'},
@@ -25,10 +27,14 @@ export class ClientOnboardingComponent implements OnInit {
     {id: 8, name: 'Bhavana'},
     {id: 9, name: 'Priyanka'},
   ];
+  public recordId: any;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.recordId = params['recordId'];
+    });
   }
 }

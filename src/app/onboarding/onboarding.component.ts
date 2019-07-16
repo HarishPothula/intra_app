@@ -46,19 +46,21 @@ export class OnboardingComponent implements OnInit {
     this.intraEdgeForm = new FormGroup({
       employmentType: new FormControl('', Validators.required),
       offerStatus: new FormControl('', Validators.required),
-      companyName: new FormControl(''),
-      name: new FormControl(''),
-      ein: new FormControl(''),
-      stateReg: new FormControl(''),
-      phNo: new FormControl(''),
-      email: new FormControl(''),
-      address: new FormGroup({
-        street: new FormControl(''),
-        city: new FormControl(''),
-        state: new FormControl(''),
-        zip: new FormControl('')
+      employer: new FormGroup({
+        companyName: new FormControl(''),
+        name: new FormControl(''),
+        ein: new FormControl(''),
+        stateReg: new FormControl(''),
+        phNo: new FormControl(''),
+        email: new FormControl(''),
+        address: new FormGroup({
+          street: new FormControl(''),
+          city: new FormControl(''),
+          state: new FormControl(''),
+          zip: new FormControl('')
+        }),
+        employerType: new FormControl('')
       }),
-      employerType: new FormControl(''),
       bgvstartDate: new FormControl(''),
       bgvendDate: new FormControl(''),
       drugTeststartDate: new FormControl(''),
@@ -68,41 +70,41 @@ export class OnboardingComponent implements OnInit {
     });
     this.intraEdgeForm.get('employmentType').valueChanges.subscribe((empType) => {
       if (empType == 3) {
-        this.intraEdgeForm.get('companyName').setValidators(Validators.required);
-        this.intraEdgeForm.get('companyName').updateValueAndValidity();
-        this.intraEdgeForm.get('name').setValidators(Validators.required);
-        this.intraEdgeForm.get('name').updateValueAndValidity();
-        this.intraEdgeForm.get('ein').setValidators(Validators.required);
-        this.intraEdgeForm.get('ein').updateValueAndValidity();
-        this.intraEdgeForm.get('stateReg').setValidators(Validators.required);
-        this.intraEdgeForm.get('stateReg').updateValueAndValidity();
-        this.intraEdgeForm.get('phNo').setValidators(Validators.required);
-        this.intraEdgeForm.get('phNo').updateValueAndValidity();
-        this.intraEdgeForm.get('email').setValidators(Validators.required);
-        this.intraEdgeForm.get('email').updateValueAndValidity();
-        this.intraEdgeForm.get(['address', 'street']).setValidators(Validators.required);
-        this.intraEdgeForm.get(['address', 'street']).updateValueAndValidity();
-        this.intraEdgeForm.get(['address', 'city']).setValidators(Validators.required);
-        this.intraEdgeForm.get(['address', 'city']).updateValueAndValidity();
-        this.intraEdgeForm.get(['address', 'state']).setValidators(Validators.required);
-        this.intraEdgeForm.get(['address', 'state']).updateValueAndValidity();
-        this.intraEdgeForm.get(['address', 'zip']).setValidators(Validators.required);
-        this.intraEdgeForm.get(['address', 'zip']).updateValueAndValidity();
-        this.intraEdgeForm.get('employerType').setValidators(Validators.required);
-        this.intraEdgeForm.get('employerType').updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'companyName']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'companyName']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'name']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'name']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'ein']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'ein']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'stateReg']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'stateReg']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'phNo']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'phNo']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'email']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'email']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'address', 'street']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'address', 'street']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'address', 'city']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'address', 'city']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'address', 'state']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'address', 'state']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'address', 'zip']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'address', 'zip']).updateValueAndValidity();
+        this.intraEdgeForm.get(['employer', 'employer', 'employerType']).setValidators(Validators.required);
+        this.intraEdgeForm.get(['employer', 'employer', 'employerType']).updateValueAndValidity();
 
       } else {
-        this.intraEdgeForm.get('companyName').clearValidators();
-        this.intraEdgeForm.get('name').clearValidators();
-        this.intraEdgeForm.get('ein').clearValidators();
-        this.intraEdgeForm.get('stateReg').clearValidators();
-        this.intraEdgeForm.get('phNo').clearValidators();
-        this.intraEdgeForm.get('email').clearValidators();
-        this.intraEdgeForm.get(['address', 'street']).clearValidators();
-        this.intraEdgeForm.get(['address', 'city']).clearValidators();
-        this.intraEdgeForm.get(['address', 'state']).clearValidators();
-        this.intraEdgeForm.get(['address', 'zip']).clearValidators();
-        this.intraEdgeForm.get('employerType').clearValidators();
+        this.intraEdgeForm.get(['employer', 'companyName']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'name']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'ein']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'stateReg']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'phNo']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'email']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'address', 'street']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'address', 'city']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'address', 'state']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'address', 'zip']).clearValidators();
+        this.intraEdgeForm.get(['employer', 'employerType']).clearValidators();
       }
     });
     this.intraEdgeForm.get('offerStatus').valueChanges.subscribe((status) => {
@@ -161,11 +163,12 @@ export class OnboardingComponent implements OnInit {
   onSubmit() {
     const uuid = UUID.UUID();
     this.onboardingInfo.recordId = uuid;
+    this.onboardingInfo.personal.address = this.onboardingInfo.personal.address;
     console.log('info', this.onboardingInfo);
     this.apiService.postConsultantInfo(this.onboardingInfo).subscribe(res => {
       console.log(res);
     });
-    this.router.navigateByUrl('/app/compliance');
+    // this.router.navigateByUrl('/app/compliance');
   }
 
   onBack() {

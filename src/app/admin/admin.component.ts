@@ -25,15 +25,14 @@ export class AdminComponent implements OnInit {
   JSONData: any;
   @ViewChild('myInput')
   myInputVariable: ElementRef;
-public categeory = [
-  {id: 1, cat: 'Category 1'},
-  {id: 2, cat: 'Category 2'},
-  {id: 3, cat: 'Category 3'},
-  {id: 4, cat: 'Category 4'},
-];
-public copyOfOnboardingInfo: any;
-public copyOfPersonalInfo: any;
-public copyOfPersonalAddress: any;
+  public categeory = [
+    {id: 1, cat: 'Category 1'},
+    {id: 2, cat: 'Category 2'},
+    {id: 3, cat: 'Category 3'},
+    {id: 4, cat: 'Category 4'},
+  ];
+  public copyOfOnboardingInfo: any;
+
   constructor(private excel: ExcelService,
               private activatedRoute: ActivatedRoute,
               private apiService: ApiService) {
@@ -46,11 +45,9 @@ public copyOfPersonalAddress: any;
       this.record_id = params['recordId'];
     });
     if (this.record_id) {
-      this.apiService.getOnboadingDataById(this.record_id).subscribe((res: any[]) => {
-        this.onboardingInfo = res;
-        this.copyOfOnboardingInfo = {...this.onboardingInfo};
-        this.copyOfPersonalInfo = {...res.personal};
-        this.copyOfPersonalAddress = {...res.personal.address};
+      this.apiService.getConsultantsInfoById(this.record_id).subscribe((res: any) => {
+        this.onboardingInfo = JSON.parse(res[0].data);
+        this.copyOfOnboardingInfo = JSON.parse(JSON.stringify(this.onboardingInfo));
       });
     } else {
       this.onboardingInfo = new Onboardinginfo();
@@ -96,18 +93,14 @@ public copyOfPersonalAddress: any;
       console.log('file', file);
       console.log('updatedDate', updatedDate);
       // if (file === 'IntraEdge New Compliance Resource Report_Example.csv') {
-        const reader = new FileReader();
+      const reader = new FileReader();
 
-        reader.readAsText(input.files[0]);
-        reader.onload = () => {
-          const text = reader.result;
-          this.text = text;
-          this.csvJSON(text);
-        };
-      // } else {
-      //   this.myInputVariable.nativeElement.value = '';
-      //   alert('not supported');
-      // }
+      reader.readAsText(input.files[0]);
+      reader.onload = () => {
+        const text = reader.result;
+        this.text = text;
+        this.csvJSON(text);
+      };
     }
   }
 
@@ -115,13 +108,4 @@ public copyOfPersonalAddress: any;
     this.excel.exportAsExcelFile(this.dataToBeExported, 'ExportedFromAngularAPP');
   }
 
-  // addRow(tableID) {
-  //   const table = document.getElementById('my-table-body');
-  //   const row = table.insertRow(0);
-  //   const cell1 = row.insertCell(0);
-  //   const cell2 = row.insertCell(1);
-  // }
-  // onDelete(row) {
-  //   console.log('roe', row);
-  // }
 }

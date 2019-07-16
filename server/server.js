@@ -27,10 +27,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.all('/!*', function(req, res, next) {
+app.all('/!*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
+  res.header("Access-Control-Allow-Methods", "GET, POST", "PUT");
   next();
 });
 
@@ -95,7 +95,7 @@ app.post("/postVendorInfo", function (req, res) {
   const info = req.body;
   let stmt = `INSERT INTO vendor(vendorName,contactPerson,contact,email,region,scopeOfServices,newSubmittal,street,city,state,zip,record_id,createdBy,createdOn,updatedBy,updatedOn)  VALUES ?  `;
   let todos = [
-    [info.vendorName, info.contactPerson, info.contact, info.email, info.region.name,info.scopeOfServices, info.newSubmittal.value, info.address.street, info.address.city, info.address.state.name, info.address.zip, info.record_id, info.createdBy, info.createdOn, info.updatedBy, info.updatedOn],
+    [info.vendorName, info.contactPerson, info.contact, info.email, info.region.name, info.scopeOfServices, info.newSubmittal.value, info.street, info.city, info.state.name, info.zip, info.record_id, info.createdBy, info.createdOn, info.updatedBy, info.updatedOn],
   ];
   connection.query(stmt, [todos], (err, results, fields) => {
     if (err) {
@@ -121,10 +121,9 @@ app.get('/getVendorInfo', function (req, res) {
 app.post('/deleteVendorRecord', function (req, res) {
   let sql = `DELETE FROM vendor WHERE record_id = ?`;
   connection.query(sql, req.body.record_id, (error, results, fields) => {
-    if (error){
+    if (error) {
       return console.error(error.message);
-    }
-    else {
+    } else {
       res.end();
       console.log('Deleted Row(s):', results.affectedRows);
     }
@@ -133,10 +132,9 @@ app.post('/deleteVendorRecord', function (req, res) {
 app.post('/vendorById', function (req, res) {
   let sql = `SELECT * FROM vendor WHERE record_id = ?`;
   connection.query(sql, req.body.record_id, (error, results, fields) => {
-    if (error){
+    if (error) {
       return console.error(error.message);
-    }
-    else {
+    } else {
       res.send(results);
       res.end();
       console.log('Vendor Row(s):', results.affectedRows);
@@ -146,10 +144,9 @@ app.post('/vendorById', function (req, res) {
 app.post('/updatevendorById', function (req, res) {
   let sql = `UPDATE vendor SET address = 'Canyon 123' WHERE address = 'Valley 345'`;
   connection.query(sql, req.body.record_id, (error, results, fields) => {
-    if (error){
+    if (error) {
       return console.error(error.message);
-    }
-    else {
+    } else {
       res.send(results);
       res.end();
       console.log('Vendor Row(s):', results.affectedRows);
@@ -183,28 +180,69 @@ var upload = multer({ //multer settings
 // Consultant service calls start;
 
 app.post("/postConsultantInfo", function (req, res) {
+  // const info = req.body;
+  // var stringObj = JSON.stringify(info);
+  // let stmt = `INSERT INTO consultant(clientName,recruiter,accountManager,uuid,firstName,lastName,dob,ssn,phNo,email,visa,expiration,i94Date,employmentType,offerStatus,bgvstartDate,bgvendDate,drugTeststartDate,drugTestendDate,ndastartDate,ndaendDate,ads,client_email,role,sow,sowSubmittedBy,sowSubmittedOn,cafeNumber,po,poLineNumber,rate,startDate,endDate,laptopNo,employer)  VALUES ?  `;
+  // let todos = [[info.clientName.name, info.recruiter.name, info.accountManager.name, info.personal.uuid, info.personal.firstName, info.personal.lastName, info.personal.dob,
+  //   info.personal.ssn, info.personal.phNo, info.personal.email, info.personal.visa, info.personal.expiration, info.personal.i94date,
+  //   info.internal.employmentType.name, info.internal.offerStatus.value, info.internal.bgvstartDate, info.internal.bgvendDate, info.internal.drugTeststartDate, info.internal.drugTestendDate,
+  //   info.internal.ndastartDate, info.internal.ndaendDate,
+  //   info.client.ads, info.client.email, info.client.role, info.client.sow.type, info.client.sowSubmittedBy.name, info.client.sowSubmittedOn, info.client.cafeNumber, info.client.po, info.client.poLineNumber,
+  //   info.client.rate, info.client.startDate, info.client.endDate, info.client.laptopNo, stringObj]];
+  // connection.query(stmt, [todos], (err, results, fields) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   } else {
+  //     res.end();
+  //     console.log('Row inserted:' + results.affectedRows);
+  //   }
+  // });
   const info = req.body;
-  let stmt = `INSERT INTO consultant(vendorName,contactPerson,contact,email,region,scopeOfServices,newSubmittal,street,city,state,zip,record_id,createdBy,createdOn,updatedBy,updatedOn)  VALUES ?  `;
-  let todos = [
-    [info.vendorName, info.contactPerson, info.contact, info.email, info.region.name,info.scopeOfServices, info.newSubmittal.value, info.address.street, info.address.city, info.address.state.name, info.address.zip, info.record_id, info.createdBy, info.createdOn, info.updatedBy, info.updatedOn],
-  ];
+  var stringObj = JSON.stringify(info);
+  let stmt = `INSERT INTO consultant_data(record_id,data)  VALUES ?  `;
+  let todos = [[info.record_id,stringObj]];
   connection.query(stmt, [todos], (err, results, fields) => {
-    if (err) {
-      return console.error(err.message);
-    } else {
-      res.end();
-      console.log('Row inserted:' + results.affectedRows);
-    }
-  });
+      if (err) {
+        return console.error(err.message);
+      } else {
+        res.end();
+        console.log('Row inserted:' + results.affectedRows);
+      }
+    });
 });
 
 app.get('/getConsultantsInfo', function (req, res) {
-  let sql = `SELECT * FROM consultant`;
+  let sql = `SELECT * FROM consultant_data`;
   connection.query(sql, (error, results, fields) => {
     res.send(results);
     return res;
     if (error) {
       return console.error(error.message);
+    }
+  });
+});
+
+app.post('/consultantById', function (req, res) {
+  let sql = `SELECT * FROM consultant_data WHERE record_id = ?`;
+  connection.query(sql, req.body.record_id, (error, results, fields) => {
+    if (error) {
+      return console.error(error.message);
+    } else {
+      res.send(results);
+      res.end();
+      console.log('Vendor Row(s):', results.affectedRows);
+    }
+  });
+});
+app.post('/updateConsultantById', function (req, res) {
+  let sql = `UPDATE vendor SET address = 'Canyon 123' WHERE address = 'Valley 345'`;
+  connection.query(sql, req.body.record_id, (error, results, fields) => {
+    if (error) {
+      return console.error(error.message);
+    } else {
+      res.send(results);
+      res.end();
+      console.log('Vendor Row(s):', results.affectedRows);
     }
   });
 });

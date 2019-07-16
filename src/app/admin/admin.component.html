@@ -1,8 +1,6 @@
  <div class="container container-fluid mt-5" *ngIf="next === false">
         <app-personal #personalComponent class="mb-5" [onboardingInfo]="onboardingInfo" (onPersonalFormNext)="getNextEvent($event)"
-                      [copyOfOnboardingInfo]="copyOfOnboardingInfo"
-        [copyOfPersonalInfo]="copyOfPersonalInfo"
-                      [copyOfPersonalAddress]="copyOfPersonalAddress"></app-personal>
+                      [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-personal>
     </div>
     <div class="container container-fluid mt-5" *ngIf="next === true">
       <fieldset>

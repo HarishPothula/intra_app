@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BooleanList, EmployerInformation} from '../../models/app.models';
 
 @Component({
@@ -12,6 +12,7 @@ import {BooleanList, EmployerInformation} from '../../models/app.models';
 export class IntraedgeOnboardingComponent implements OnInit {
   @Input() onboardingInfo: any;
   @Input() parentFormGroup: FormGroup;
+  @Input() copyOfOnboardingInfo: any;
   public employmentTypes = [
     {id: 1, name: 'W-2(Salaried)'},
     {id: 2, name: 'W-2(Hourly)'},
@@ -27,14 +28,24 @@ export class IntraedgeOnboardingComponent implements OnInit {
   public booleanList = BooleanList;
   public employerArray = [{}];
   public employerType$: any;
+  public employer$: any;
+  public employerSelected: any;
+  public recordId: any;
 
   constructor(private apiService: ApiService,
-              private router: Router) {
+              private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.apiService.getStates().subscribe((res: any[]) => {
       this.statesList = res;
+    });
+    this.apiService.getVendorInfo().subscribe((resp: any) => {
+      this.employer$ = resp;
+      console.log(resp);
+    });
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.recordId = params['recordId'];
     });
     this.employerType$ = false;
   }
@@ -72,5 +83,17 @@ export class IntraedgeOnboardingComponent implements OnInit {
 
   onAddEmployer() {
     this.onboardingInfo.internal.employer.push(new EmployerInformation());
+  }
+
+  onCompanyNameType(value, index) {
+    this.employerSelected = value;
+    // this.onboardingInfo.internal.employer.forEach((res, i) => {
+    //   if (i === index) {
+    //     res.stateReg = value.state;
+    //   } else {
+    //     res.stateReg = res.stateReg;
+    //   }
+    //
+    // });
   }
 }

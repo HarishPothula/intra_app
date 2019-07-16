@@ -11,22 +11,22 @@
     [rows]='employeesData'>
     <ngx-datatable-column name="Employee Id">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.guid}}
+        {{row.personal?.uuid}}
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Name">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.firstName + ',' +  row.lastName}}
+        {{row.personal.firstName + ',' +  row.personal.lastName}}
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Phone Number">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.phNo}}
+        {{row.personal.phNo}}
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Client">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.client}}
+        {{row.clientName.name}}
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="">
