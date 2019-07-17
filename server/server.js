@@ -142,8 +142,12 @@ app.post('/vendorById', function (req, res) {
   });
 });
 app.post('/updatevendorById', function (req, res) {
-  let sql = `UPDATE vendor SET address = 'Canyon 123' WHERE address = 'Valley 345'`;
-  connection.query(sql, req.body.record_id, (error, results, fields) => {
+  const info = req.body.data$;
+  var post  = {vendorName: info.vendorName, contactPerson: info.contactPerson, contact: info.contact, email: info.email, region: info.region.name, scopeOfServices: info.scopeOfServices,
+    newSubmittal: info.newSubmittal.value, street: info.street, city: info.city, state: info.state.name, zip: info.zip, record_id: info.record_id, createdBy: info.createdOn,
+    createdOn: info.createdBy, updatedBy: info.updatedBy, updatedOn: info.updatedOn};
+  var condition = {record_id: info.record_id};
+  connection.query('UPDATE vendor SET ? WHERE ?', [post, condition] , (error, results, fields) => {
     if (error) {
       return console.error(error.message);
     } else {

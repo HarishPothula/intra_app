@@ -69,7 +69,7 @@ export class VendorComponent implements OnInit {
     } else if (this.recordId) {
       vendorInfo.updatedBy = 'Admin';
       vendorInfo.updatedOn = moment().format();
-      this.apiService.postVendorInfo(vendorInfo).subscribe(res => {
+      this.apiService.updateVendorById(this.recordId, vendorInfo).subscribe(res => {
         console.log(res);
       });
     }
