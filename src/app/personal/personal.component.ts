@@ -55,7 +55,6 @@ export class PersonalComponent implements OnInit {
       recruiter: new FormControl('', Validators.required),
     });
     this.personalForm = new FormGroup({
-      uuid: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       dob: new FormControl('', Validators.required),
