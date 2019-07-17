@@ -52,8 +52,8 @@
                    bindLabel="type"
                    placeholder="Select Visa Type"
                    [(ngModel)]="onboardingInfo.client && onboardingInfo.client.sow" #sow></ng-select>
-        <small *ngIf="recordId && (parentFormGroup.value.sow && parentFormGroup.value.sow.type) !== (copyOfOnboardingInfo && (copyOfOnboardingInfo.client.sow && copyOfOnboardingInfo.client.sow.type))" class="text-info">
-          Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.client.sow.type}}
+        <small *ngIf="recordId && (parentFormGroup.value.sow && parentFormGroup.value.sow.type) !== (copyOfOnboardingInfo && (copyOfOnboardingInfo.client && copyOfOnboardingInfo.client.sow && copyOfOnboardingInfo.client.sow.type))" class="text-info">
+          Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.client && copyOfOnboardingInfo.client.sow && copyOfOnboardingInfo.client.sow.type}}
         </small>
       </div>
     </div>

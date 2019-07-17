@@ -107,5 +107,4 @@ export class AdminComponent implements OnInit {
   onExport() {
     this.excel.exportAsExcelFile(this.dataToBeExported, 'ExportedFromAngularAPP');
   }
-
 }

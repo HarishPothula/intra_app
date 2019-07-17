@@ -11,7 +11,7 @@
     [rows]='employeesData'>
     <ngx-datatable-column name="Employee Id">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.personal?.uuid}}
+        {{row.recordId}}
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="Name">

@@ -57,4 +57,12 @@ export class ApiService {
     const id$ = {record_id: id};
     return this.http.post('http://localhost:3000/consultantById', id$);
   }
+  updateConsultantById(data, id) {
+    const id$ = {record_id: id, data$: data};
+    return this.http.post('http://localhost:3000/updateConsultantById', id$);
+  }
+  deleteConsultantById(id) {
+    const id$ = {record_id: id};
+    return this.http.post('http://localhost:3000/deleteConsultantRecord', id$);
+  }
 }

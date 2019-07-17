@@ -14,6 +14,10 @@ export class OnboardingsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getConsultants();
+  }
+
+  getConsultants() {
     this.apiService.getConsultantsInfo().subscribe((res: any) => {
       const data_array = [];
       res.forEach(q => {
@@ -26,11 +30,8 @@ export class OnboardingsComponent implements OnInit {
   }
 
   onDelete(row) {
-    this.employeesData.forEach(res => {
-      if (row.guid === res.guid) {
-        const index = this.employeesData.indexOf(res);
-        this.employeesData.splice(index, 1);
-      }
+    this.apiService.deleteConsultantById(row.recordId).subscribe(res => {
+      this.getConsultants();
     });
   }
 

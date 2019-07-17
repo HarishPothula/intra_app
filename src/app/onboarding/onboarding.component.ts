@@ -161,13 +161,20 @@ export class OnboardingComponent implements OnInit {
   }
 
   onSubmit() {
-    const uuid = UUID.UUID();
-    this.onboardingInfo.recordId = uuid;
-    this.onboardingInfo.personal.address = this.onboardingInfo.personal.address;
-    console.log('info', this.onboardingInfo);
-    this.apiService.postConsultantInfo(this.onboardingInfo).subscribe(res => {
-      console.log(res);
-    });
+    if (!this.record_id) {
+      const uuid = UUID.UUID();
+      this.onboardingInfo.recordId = uuid;
+      this.onboardingInfo.personal.address = this.onboardingInfo.personal.address;
+      console.log('info', this.onboardingInfo);
+      this.apiService.postConsultantInfo(this.onboardingInfo).subscribe(res => {
+        console.log(res);
+      });
+    } else {
+      this.apiService.updateConsultantById(this.onboardingInfo, this.record_id).subscribe(res => {
+        console.log(res);
+      });
+    }
+
     // this.router.navigateByUrl('/app/compliance');
   }
 

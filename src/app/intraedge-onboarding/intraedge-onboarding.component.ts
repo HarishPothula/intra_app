@@ -87,13 +87,5 @@ export class IntraedgeOnboardingComponent implements OnInit {
 
   onCompanyNameType(value, index) {
     this.employerSelected = value;
-    // this.onboardingInfo.internal.employer.forEach((res, i) => {
-    //   if (i === index) {
-    //     res.stateReg = value.state;
-    //   } else {
-    //     res.stateReg = res.stateReg;
-    //   }
-    //
-    // });
   }
 }

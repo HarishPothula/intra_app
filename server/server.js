@@ -200,15 +200,16 @@ app.post("/postConsultantInfo", function (req, res) {
   const info = req.body;
   var stringObj = JSON.stringify(info);
   let stmt = `INSERT INTO consultant_data(record_id,data)  VALUES ?  `;
-  let todos = [[info.record_id,stringObj]];
+  console.log('info.record_id', info.recordId, req.body);
+  let todos = [[info.recordId, stringObj]];
   connection.query(stmt, [todos], (err, results, fields) => {
-      if (err) {
-        return console.error(err.message);
-      } else {
-        res.end();
-        console.log('Row inserted:' + results.affectedRows);
-      }
-    });
+    if (err) {
+      return console.error(err.message);
+    } else {
+      res.end();
+      console.log('Row inserted:' + results.affectedRows);
+    }
+  });
 });
 
 app.get('/getConsultantsInfo', function (req, res) {
@@ -235,18 +236,29 @@ app.post('/consultantById', function (req, res) {
   });
 });
 app.post('/updateConsultantById', function (req, res) {
-  let sql = `UPDATE vendor SET address = 'Canyon 123' WHERE address = 'Valley 345'`;
-  connection.query(sql, req.body.record_id, (error, results, fields) => {
+  var stringObj = JSON.stringify(req.body.data$);
+  connection.query('UPDATE consultant_data SET data = ? WHERE record_id = ?', [stringObj,req.body.record_id], (error, results, fields) => {
     if (error) {
       return console.error(error.message);
     } else {
       res.send(results);
       res.end();
-      console.log('Vendor Row(s):', results.affectedRows);
+      console.log('Deleted Row(s):', results.affectedRows);
     }
   });
 });
 
+app.post('/deleteConsultantRecord', function (req, res) {
+  let sql = `DELETE FROM consultant_data WHERE record_id = ?`;
+  connection.query(sql, req.body.record_id, (error, results, fields) => {
+    if (error) {
+      return console.error(error.message);
+    } else {
+      res.end();
+      console.log('Deleted Row(s):', results.affectedRows);
+    }
+  });
+});
 //Consultant service calls end;
 app.get('/', function (req, res) {
   res.sendFile(__dirname + "/index.html");
