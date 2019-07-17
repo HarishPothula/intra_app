@@ -36,13 +36,10 @@ export class OnboardingComponent implements OnInit {
       this.onboardingInfo = this.apiService.onboardingData;
       this.onboardingInfo.internal = new InteranalInformation();
       this.onboardingInfo.client = new ClientInformation();
-      this.onboardingInfo.internal.employer.push(new EmployerInformation());
+      // this.onboardingInfo.internal.employer.push(new EmployerInformation());
     } else {
       this.onboardingInfo = this.onboardingInfo;
     }
-
-    console.log('this.onboardingInfo', this.onboardingInfo);
-    // this.clientName = this.onboardingInfo.clientName.name;
     this.intraEdgeForm = new FormGroup({
       employmentType: new FormControl('', Validators.required),
       offerStatus: new FormControl('', Validators.required),

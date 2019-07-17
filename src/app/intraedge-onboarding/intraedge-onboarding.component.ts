@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -37,6 +37,7 @@ export class IntraedgeOnboardingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.onboardingInfo.internal.employer.push(new EmployerInformation());
     this.apiService.getStates().subscribe((res: any[]) => {
       this.statesList = res;
     });
@@ -81,7 +82,7 @@ export class IntraedgeOnboardingComponent implements OnInit {
     }
   }
 
-  onAddEmployer() {
+  onAddEmployer(i) {
     this.onboardingInfo.internal.employer.push(new EmployerInformation());
   }
 

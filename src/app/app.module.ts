@@ -9,7 +9,7 @@ import { IntraedgeOnboardingComponent } from './intraedge-onboarding/intraedge-o
 import { ClientOnboardingComponent } from './client-onboarding/client-onboarding.component';
 import {CollapseModule} from 'ngx-bootstrap';
 import {ArchwizardModule} from 'angular-archwizard';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApiService} from '../services/api.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TimesheetsComponent } from './timesheets/timesheets.component';
@@ -54,6 +54,7 @@ import { VendorsListComponent } from './vendors-list/vendors-list.component';
     AppRoutingModule,
     CollapseModule,
     ArchwizardModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgxDatatableModule,

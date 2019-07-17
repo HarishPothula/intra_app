@@ -12,7 +12,9 @@
                    bindLabel="name"
                    placeholder="Select Employment Type"
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.employmentType" #empType></ng-select>
-        <small *ngIf="recordId && parentFormGroup.value.employmentType.name !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employmentType.name)" class="text-info">
+        <small
+          *ngIf="recordId && parentFormGroup.value.employmentType.name !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employmentType.name)"
+          class="text-info">
           Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employmentType.name}}
         </small>
       </div>
@@ -29,177 +31,182 @@
                    bindLabel="value"
                    placeholder="Select Offer Status"
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.offerStatus" #status></ng-select>
-        <small *ngIf="recordId && parentFormGroup.value.offerStatus.value !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.offerStatus.value)" class="text-info">
+        <small
+          *ngIf="recordId && parentFormGroup.value.offerStatus.value !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.offerStatus.value)"
+          class="text-info">
           Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.offerStatus.value}}
         </small>
       </div>
     </div>
     <div *ngIf="(onboardingInfo.internal.employmentType && onboardingInfo.internal.employmentType.id == 3) &&
 (onboardingInfo.internal.offerStatus && onboardingInfo.internal.offerStatus.id == 1)">
-      <div *ngFor="let employer of onboardingInfo.internal.employer; let i = index" class="card mt-2" formGroupName="employer">
-        <fieldset class="ml-3">
-          <legend>Employer Information</legend>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                Company Name:
-              </label>
-            </div>
-            <div class="col-6">
-              <ng-select formControlName="companyName"
-                         [items]="employer$"
-                         bindLabel="vendorName"
-                         placeholder="Select Employer"
-                         [(ngModel)]="employer.companyName"
-                         (change)="onCompanyNameType($event, i)"></ng-select>
-              <!--<small *ngIf="recordId && parentFormGroup.value.employer.companyName.vendorName !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.companyName.vendorName)" class="text-info">
-                Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.companyName.vendorName}}
-              </small>-->
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                EIN:
-              </label>
-            </div>
-            <div class="col-6">
-              <input type="number" formControlName="ein" class="form-control"
-                     [(ngModel)]="employer.ein">
-              <!--<small *ngIf="recordId && parentFormGroup.value.employer.ein !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.ein)" class="text-info">
-                Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.ein}}
-              </small>-->
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                State of Registration:
-              </label>
-            </div>
-            <div class="col-6">
-              <input type="text" formControlName="stateReg" class="form-control"
-                     [(ngModel)]="employer.stateReg">
-              <!--<small *ngIf="recordId && parentFormGroup.value.employer.stateReg !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.stateReg)" class="text-info">
-                Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.stateReg}}
-              </small>-->
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                Contact Person Name:
-              </label>
-            </div>
-            <div class="col-6">
-              <input type="text" formControlName="name" class="form-control"
-                     [(ngModel)]="employer.name">
-              <!--<small *ngIf="recordId && parentFormGroup.value.employer.name !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.name)" class="text-info">
-                Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.name}}
-              </small>-->
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                Phone Number:
-              </label>
-            </div>
-            <div class="col-6">
-              <input type="number" formControlName="phNo" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
-                     class="form-control"
-                     [(ngModel)]="employer.phNo">
-              <!--<small *ngIf="recordId && parentFormGroup.value.employer.phNo !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.phNo)" class="text-info">
-                Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.phNo}}
-              </small>-->
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                e-mail:
-              </label>
-            </div>
-            <div class="col-6">
-              <input type="text" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                     class="form-control"
-                     [(ngModel)]="employer.email">
-              <!--<small *ngIf="recordId && parentFormGroup.value.employer.email !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.email)" class="text-info">
-                Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.email}}
-              </small>-->
-            </div>
-          </div>
-          <!--<div formGroupName="address">
-            <fieldset>
-              <legend>Address</legend>
-              <div class="row mb-3">
-                <div class="col-4">
-                  <label required>
-                    Street:
-                  </label>
-                </div>
-                <div class="col-6">
-                  <input type="text" formControlName="street" class="form-control"
-                         [(ngModel)]="employer.address && employer.address.street">
-                </div>
+      <div *ngFor="let employer of onboardingInfo.internal.employer; let i = index; let isLast = last" class="card mt-2">
+        <div formArrayName="employer">
+          <fieldset class="ml-3">
+            <legend>Employer Information</legend>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  Company Name:
+                </label>
               </div>
-              <div class="row mb-3">
-                <div class="col-4">
-                  <label required>
-                    City:
-                  </label>
-                </div>
-                <div class="col-6">
-                  <input type="text" formControlName="city" class="form-control"
-                         [(ngModel)]="employer.address && employer.address.city">
-                </div>
+              <div class="col-6">
+                <ng-select formControlName="companyName"
+                           [items]="employer$"
+                           bindLabel="vendorName"
+                           placeholder="Select Employer"
+                           [(ngModel)]="employer[i] && employer[i].companyName"
+                           (change)="onCompanyNameType($event, i)"></ng-select>
+                <!--<small *ngIf="recordId && parentFormGroup.value.employer.companyName.vendorName !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.companyName.vendorName)" class="text-info">
+                  Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.companyName.vendorName}}
+                </small>-->
               </div>
-              <div class="row mb-3">
-                <div class="col-4">
-                  <label required>
-                    State:
-                  </label>
-                </div>
-                <div class="col-6">
-                  <select formControlName="state"
-                          [(ngModel)]="employer.address && employer.address.state">
-                    <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-4">
-                  <label required>
-                    Zip Code:
-                  </label>
-                </div>
-                <div class="col-6">
-                  <input type="text" formControlName="zip" class="form-control"
-                         [(ngModel)]="employer.address && employer.address.zip">
-                </div>
-              </div>
-            </fieldset>
-          </div>-->
-          <div class="row mb-3">
-            <div class="col-4">
-              <label required>
-                Primary Employer:
-              </label>
             </div>
-            <div class="col-6">
-              <select formControlName="employerType" #employerType$$
-                      [(ngModel)]="employer.employerType" (change)="onEmployerType(employerType$$.value)">
-                <option *ngFor="let value of booleanList" [ngValue]="value.id">{{value.value}}</option>
-              </select>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  EIN:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="number" formControlName="ein" class="form-control"
+                       [(ngModel)]="employer.ein">
+                <!--<small *ngIf="recordId && parentFormGroup.value.employer.ein !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.ein)" class="text-info">
+                  Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.ein}}
+                </small>-->
+              </div>
             </div>
-          </div>
-        </fieldset>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  State of Registration:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="stateReg" class="form-control"
+                       [(ngModel)]="employer.stateReg">
+                <!--<small *ngIf="recordId && parentFormGroup.value.employer.stateReg !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.stateReg)" class="text-info">
+                  Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.stateReg}}
+                </small>-->
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  Contact Person Name:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="name" class="form-control"
+                       [(ngModel)]="employer.name">
+                <!--<small *ngIf="recordId && parentFormGroup.value.employer.name !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.name)" class="text-info">
+                  Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.name}}
+                </small>-->
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  Phone Number:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="number" formControlName="phNo" class="form-control" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                       class="form-control"
+                       [(ngModel)]="employer.phNo">
+                <!--<small *ngIf="recordId && parentFormGroup.value.employer.phNo !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.phNo)" class="text-info">
+                  Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.phNo}}
+                </small>-->
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  e-mail:
+                </label>
+              </div>
+              <div class="col-6">
+                <input type="text" formControlName="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                       class="form-control"
+                       [(ngModel)]="employer.email">
+                <!--<small *ngIf="recordId && parentFormGroup.value.employer.email !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.email)" class="text-info">
+                  Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.employer.email}}
+                </small>-->
+              </div>
+            </div>
+            <!--<div formGroupName="address">
+              <fieldset>
+                <legend>Address</legend>
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <label required>
+                      Street:
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <input type="text" formControlName="street" class="form-control"
+                           [(ngModel)]="employer.address && employer.address.street">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <label required>
+                      City:
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <input type="text" formControlName="city" class="form-control"
+                           [(ngModel)]="employer.address && employer.address.city">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <label required>
+                      State:
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <select formControlName="state"
+                            [(ngModel)]="employer.address && employer.address.state">
+                      <option *ngFor="let state of statesList" [ngValue]="state.id">{{state.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <label required>
+                      Zip Code:
+                    </label>
+                  </div>
+                  <div class="col-6">
+                    <input type="text" formControlName="zip" class="form-control"
+                           [(ngModel)]="employer.address && employer.address.zip">
+                  </div>
+                </div>
+              </fieldset>
+            </div>-->
+            <div class="row mb-3">
+              <div class="col-4">
+                <label required>
+                  Primary Employer:
+                </label>
+              </div>
+              <div class="col-6">
+                <select formControlName="employerType" #employerType$$
+                        [(ngModel)]="employer.employerType" (change)="onEmployerType(employerType$$.value)">
+                  <option *ngFor="let value of booleanList" [ngValue]="value.id">{{value.value}}</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="row ml-3" *ngIf="employerType$ === false && isLast">
+          <button class="btn btn-link" (click)="onAddEmployer(i)">
+            Add Employer
+          </button>
+        </div>
       </div>
-      <div class="row" *ngIf="employerType$ === false">
-        <button class="btn btn-link" (click)="onAddEmployer()">
-          Add Employer
-        </button>
-      </div>
+
     </div>
     <div *ngIf="onboardingInfo.internal.offerStatus && onboardingInfo.internal.offerStatus.id == 1">
       <div class="row mb-3">
@@ -214,7 +221,9 @@
           <label>Start
             <input type="date" formControlName="bgvstartDate" class="form-control" #bgvStartDate
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.bgvstartDate">
-            <small *ngIf="recordId && parentFormGroup.value.bgvstartDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.bgvstartDate)" class="text-info">
+            <small
+              *ngIf="recordId && parentFormGroup.value.bgvstartDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.bgvstartDate)"
+              class="text-info">
               Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.bgvstartDate}}
             </small>
           </label>
@@ -222,7 +231,9 @@
           <label>End
             <input type="date" formControlName="bgvendDate" class="form-control" #bgvEndDate
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.bgvendDate">
-            <small *ngIf="recordId && parentFormGroup.value.bgvendDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.bgvendDate)" class="text-info">
+            <small
+              *ngIf="recordId && parentFormGroup.value.bgvendDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.bgvendDate)"
+              class="text-info">
               Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.bgvendDate}}
             </small>
           </label>
@@ -240,14 +251,18 @@
           <label>Start
             <input type="date" formControlName="drugTeststartDate" class="form-control" #drugTeststartDate
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.drugTeststartDate">
-            <small *ngIf="recordId && parentFormGroup.value.drugTeststartDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.drugTeststartDate)" class="text-info">
+            <small
+              *ngIf="recordId && parentFormGroup.value.drugTeststartDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.drugTeststartDate)"
+              class="text-info">
               Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.drugTeststartDate}}
             </small>
           </label>
           <label>End
             <input type="date" formControlName="drugTestendDate" class="form-control" #drugTestendDate
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.drugTestendDate">
-            <small *ngIf="recordId && parentFormGroup.value.drugTestendDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.drugTestendDate)" class="text-info">
+            <small
+              *ngIf="recordId && parentFormGroup.value.drugTestendDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.drugTestendDate)"
+              class="text-info">
               Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.drugTestendDate}}
             </small>
           </label>
@@ -265,14 +280,18 @@
           <label>Start
             <input type="date" formControlName="ndastartDate" class="form-control" #ndastartDate
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.ndastartDate">
-            <small *ngIf="recordId && parentFormGroup.value.ndastartDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.ndastartDate)" class="text-info">
+            <small
+              *ngIf="recordId && parentFormGroup.value.ndastartDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.ndastartDate)"
+              class="text-info">
               Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.ndastartDate}}
             </small>
           </label>
           <label>End
             <input type="date" formControlName="ndaendDate" class="form-control" #ndaendDate
                    [(ngModel)]="onboardingInfo.internal && onboardingInfo.internal.ndaendDate">
-            <small *ngIf="recordId && parentFormGroup.value.ndaendDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.ndaendDate)" class="text-info">
+            <small
+              *ngIf="recordId && parentFormGroup.value.ndaendDate !== (copyOfOnboardingInfo && copyOfOnboardingInfo.internal.ndaendDate)"
+              class="text-info">
               Old value was -{{copyOfOnboardingInfo && copyOfOnboardingInfo.internal.ndaendDate}}
             </small>
           </label>
@@ -281,5 +300,3 @@
     </div>
   </form>
 </div>
-
-
