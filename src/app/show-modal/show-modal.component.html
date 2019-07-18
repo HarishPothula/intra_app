@@ -1,0 +1,447 @@
+<div class="modal-header">
+  <h5>Resource Information</h5>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Resource Id:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resourceId}}
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        First Name:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resourceFirstName}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Middle Name:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resourceMiddleName}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Last Name:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resourceLastName}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Location Description:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.location}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Location Address 1::
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.locationaddress}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Location City:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.city}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Location State:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.state}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Location Country:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.country}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Leader Level 3:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.leaderLevel3}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Leader Level 4:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.leaderLevel4}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Leader Level 5:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.leaderLevel5}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+  <div class="col-3">
+    <label required>
+      Leader Level 6:
+    </label>
+  </div>
+  <div class="col-6">
+    {{src.leaderLevel6}}
+  </div>
+</div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Normalized Vendor:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.normalizedVendor}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Resource Classification:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resourceClassification}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Employee/ Sub Contractor:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.employeeOrSubCon}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Sub-Contractor Company Name:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.subContractorCompany}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+       Resource Statue:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resourceStatus}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Startd date:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.startDate}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Notification Date Resource Leaving:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.notificationdateResourceLeaving}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Departure Date:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.departureDate}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Defined as Key Personnel:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.definedAsKeyPersonnel}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Defined as critical resource:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.definedAsCriticalresource}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Non T&M (On-Shore or Off-Shore):
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.onShoreOffShore}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Non T&M (On-Site or Off-Site):
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.onSiteOffSite}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Project ID:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.projectId}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Role Title/Job Description:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.role}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Premium Technology/Skillset (if applicable):
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.premiumTechnology}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        PO/SOW Number:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.poNumber}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        ADS Id:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.adsId}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        AMEX Laptop / Desktop Asset Number :
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.laptopNo}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Resource Visa Status :
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.visaStatus}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Visa Expiration Date:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.visaexpiration}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Background Completion End Date:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.bgvCompletionEndDate}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Commodity:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.commodity}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        New Resource Expected Rate:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.newResourceExpectedRate}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        New Resource Assignment period (e.g.: 3 months):
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.assignmentPeriod}}
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        New Resource Rate Exception:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.resouceRateException}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Commentary:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.commentary}}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label required>
+        Misc:
+      </label>
+    </div>
+    <div class="col-6">
+      {{src.misc}}
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h5>Audit Logs</h5>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ngx-datatable
+    #table
+    class='material'
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10"
+    [rows]='src'>
+    <ngx-datatable-column name="Resource Id">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.resourceId}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Name">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.resourceFirstName}} , {{row.resourceLastName}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Normalized Vendor">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.normalizedVendor}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="PO Number">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.poNumber}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Updated On">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.updatedOn}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Updated By">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        {{row.updatedBy}}
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>
+
+
