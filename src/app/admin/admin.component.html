@@ -1,4 +1,4 @@
- <div class="container container-fluid mt-5" *ngIf="next === false">
+<!-- <div class="container container-fluid mt-5" *ngIf="next === false">
         <app-personal #personalComponent class="mb-5" [onboardingInfo]="onboardingInfo" (onPersonalFormNext)="getNextEvent($event)"
                       [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-personal>
     </div>
@@ -9,12 +9,10 @@
                                   [onboardingInfo]="onboardingInfo" (onOnboardingsFormNext)="getOnBackEvent($event)"
                         [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-onboarding>
       </fieldset>
-    </div>
-<!--<input class="form-control" type='file' (change)='convertFile(myInput)' id='fileInput' #myInput>-->
-<!--<div class="container-fluid border">-->
-<!--  {{JSONData}}-->
-<!--</div>-->
-<!-- <app-consultant></app-consultant>-->
+    </div>-->
+<div class="container container-fluid mt-5">
+  <app-consultant [onboardingInfo]="onboardingInfo"  [copyOfOnboardingInfo]="copyOfOnboardingInfo"></app-consultant>
+</div>
 <footer>
   <div class="container wpb_column vc_column_container vc_col-sm-12">
     <div class="vc_column-inner">

@@ -1,5 +1,5 @@
 <div class="container container-fluid">
-  <div class="float-right row"><button routerLink="/app/vendors-list" class="btn-link">Show </button> </div>
+  <div class="float-right row"><button routerLink="/app/vendors-list" class="btn btn-primary">Show All Vendors</button></div>
   <h4>Sub Vendor Information</h4>
 <form [formGroup]="vendorForm">
   <div class="row mb-3 mt-4">
@@ -35,7 +35,7 @@
       </label>
     </div>
     <div class="col-6">
-      <input type="number" formControlName="contact" class="form-control" [(ngModel)]="vendorInfo.contact">
+      <input type="text" formControlName="contact" class="form-control" [(ngModel)]="vendorInfo.contact">
       <small *ngIf="recordId && vendorForm.value.contact !== (unmodifiedData && unmodifiedData.contact)" class="text-info">
         Old value was -{{unmodifiedData && unmodifiedData.contact}}
       </small>
@@ -75,21 +75,21 @@
   </div>
   <div>
     <fieldset>
-      <legend>Address</legend>
+<!--      <legend>Address</legend>-->
       <div class="row mb-3">
         <div class="col-3">
           <label required>
-            Street:
+            Address:
           </label>
         </div>
         <div class="col-6">
-          <input type="text" formControlName="street" class="form-control" [(ngModel)]="(vendorInfo.address && vendorInfo.address.street) || vendorInfo.street">
-          <small *ngIf="recordId && vendorForm.value.street !== (unmodifiedData && unmodifiedData.street)" class="text-info">
-            Old value was -{{unmodifiedData && unmodifiedData.street}}
+          <input type="text" formControlName="address" class="form-control" [(ngModel)]="(vendorInfo.address) || vendorInfo.address">
+          <small *ngIf="recordId && vendorForm.value.address !== (unmodifiedData && unmodifiedData.address)" class="text-info">
+            Old value was -{{unmodifiedData && unmodifiedData.address}}
           </small>
         </div>
       </div>
-      <div class="row mb-3">
+      <!--<div class="row mb-3">
         <div class="col-3">
           <label required>
             City:
@@ -131,7 +131,7 @@
             Old value was -{{unmodifiedData && unmodifiedData.zip}}
           </small>
         </div>
-      </div>
+      </div>-->
     </fieldset>
   </div>
   <div class="row mb-3 mt-4">

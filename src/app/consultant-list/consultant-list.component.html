@@ -1,13 +1,12 @@
 <div class="container container-fluid" *ngIf="!loading">
   <div class="float-right row">
     <span> <button type="button" (click)="onDownload()" class="btn btn-primary">Download </button></span>
-       <span class="ml-2"> <csv2json
-          [btnText]="'Upload CSV '"
-          [errorMsg]="'Invalid format. Please upload only csv files..'"
-          (response)='onUpload($event)'></csv2json>
-         </span>
+    <span class="ml-2"><csv2json
+      [btnText]="'Upload CSV '"
+      [errorMsg]="'Invalid format. Please upload only csv files..'"
+      (response)='onUpload($event)'></csv2json></span>
   </div>
-  <h4 class="mt-5 mb-5">List Of Sub Vendors</h4>
+  <h4 class="mt-5 mb-5">List Of Employees/Resources</h4>
   <ngx-datatable
     #table
     class='material'
@@ -16,25 +15,25 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="10"
-    [rows]='vendorsList'>
-    <ngx-datatable-column name="Company Name">
+    [rows]='resourceList'>
+    <ngx-datatable-column name="Resource Id">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.vendorName}}
+        {{row.resourceId}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Contact Person">
+    <ngx-datatable-column name="Name">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.contactPerson}}
+        {{row.resourceFirstName}} , {{row.resourceLastName}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Phone Number">
+    <ngx-datatable-column name="Normalized Vendor">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.contact}}
+        {{row.normalizedVendor}}
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Email">
+    <ngx-datatable-column name="PO Number">
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-        {{row.email}}
+        {{row.poNumber}}
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="">
@@ -48,6 +47,20 @@
       <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
         <button class="btn btn-primary" (click)="onEdit(row)">
           Edit
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <button class="btn btn-primary" (click)="onAudit(row)">
+          Audit
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="">
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <button class="btn btn-primary" (click)="onShow(row)">
+          Show
         </button>
       </ng-template>
     </ngx-datatable-column>

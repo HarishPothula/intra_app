@@ -32,17 +32,17 @@ export class ApiService {
   }
 
   deleteVendorRecord(id) {
-    const id$ = {record_id: id};
+    const id$ = {vendorName: id};
     return this.http.post('http://localhost:3000/deleteVendorRecord', id$);
   }
 
   getVendorById(id) {
-    const id$ = {record_id: id};
+    const id$ = {vendorName: id};
     return this.http.post('http://localhost:3000/vendorById', id$);
   }
 
   updateVendorById(id, data) {
-    const id$ = {record_id: id, data$: data};
+    const id$ = {vendorName: id, data$: data};
     return this.http.post('http://localhost:3000/updatevendorById', id$);
   }
 
@@ -53,16 +53,47 @@ export class ApiService {
   getConsultantsInfo() {
     return this.http.get('http://localhost:3000/getConsultantsInfo');
   }
+
   getConsultantsInfoById(id) {
     const id$ = {record_id: id};
     return this.http.post('http://localhost:3000/consultantById', id$);
   }
+
   updateConsultantById(data, id) {
     const id$ = {record_id: id, data$: data};
     return this.http.post('http://localhost:3000/updateConsultantById', id$);
   }
+
   deleteConsultantById(id) {
     const id$ = {record_id: id};
     return this.http.post('http://localhost:3000/deleteConsultantRecord', id$);
   }
+
+  postResourceInfo(info) {
+    return this.http.post('http://localhost:3000/postresourceInfo', info);
+  }
+
+  getResourceInfo() {
+    return this.http.get('http://localhost:3000/getResourceInfo');
+  }
+
+  updateResourceById(data, id) {
+    const id$ = {record_id: id, data$: data};
+    return this.http.post('http://localhost:3000/updateResourceById', id$);
+  }
+
+  getresourceAuditById(id) {
+    const id$ = {record_id: id};
+    return this.http.post('http://localhost:3000/resourceAuditById', id$);
+  }
+
+  deleteResourceById(id) {
+    const id$ = {record_id: id};
+    return this.http.post('http://localhost:3000/deleteResourceRecord', id$);
+  }
+  getResourceInfoById(id) {
+    const id$ = {record_id: id};
+    return this.http.post('http://localhost:3000/resourcetById', id$);
+  }
+
 }

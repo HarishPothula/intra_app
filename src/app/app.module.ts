@@ -29,6 +29,12 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import { VendorComponent } from './vendor/vendor.component';
 import { ConsultantComponent } from './consultant/consultant.component';
 import { VendorsListComponent } from './vendors-list/vendors-list.component';
+import {ConsultantListComponent} from './consultant-list/consultant-list.component';
+import {CSV2JSONModule} from 'angular2-csv2json';
+import {BootstrapModalModule} from 'ng2-bootstrap-modal';
+import { AuditModalComponent } from './audit-modal/audit-modal.component';
+import {ModalModule} from 'ngb-modal';
+import { ShowModalComponent } from './show-modal/show-modal.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +53,10 @@ import { VendorsListComponent } from './vendors-list/vendors-list.component';
     MainComponent,
     VendorComponent,
     ConsultantComponent,
-    VendorsListComponent
+    VendorsListComponent,
+    ConsultantListComponent,
+    AuditModalComponent,
+    ShowModalComponent
   ],
   imports: [
     BrowserModule,
@@ -59,12 +68,20 @@ import { VendorsListComponent } from './vendors-list/vendors-list.component';
     HttpClientModule,
     NgxDatatableModule,
     NgbModule,
-    NgSelectModule
+    NgSelectModule,
+    CSV2JSONModule,
+    BootstrapModalModule,
+    ModalModule
   ],
   providers: [ApiService,
     AuthGuard,
     AuthenticationService,
     ExcelService
+  ],
+  exports: [AuditModalComponent],
+  entryComponents: [
+    AuditModalComponent,
+    ShowModalComponent
   ],
   bootstrap: [AppComponent]
 })

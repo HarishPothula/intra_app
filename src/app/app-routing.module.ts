@@ -12,6 +12,7 @@ import {OnboardingComponent} from './onboarding/onboarding.component';
 import {PersonalComponent} from './personal/personal.component';
 import {VendorComponent} from './vendor/vendor.component';
 import {VendorsListComponent} from './vendors-list/vendors-list.component';
+import {ConsultantListComponent} from './consultant-list/consultant-list.component';
 
 const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
         {path: 'offboarding', component: OffboardingComponent},
         {path: 'vendors', component: VendorComponent},
         {path: 'vendors-list', component: VendorsListComponent},
+        {path: 'resource-list', component: ConsultantListComponent},
       ]
     }
   ];

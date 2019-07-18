@@ -33,6 +33,7 @@
               "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.css"
+
             ],
             "scripts": [
               "./node_modules/moment/min/moment.min.js"

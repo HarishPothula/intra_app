@@ -4,6 +4,7 @@ import {ExcelService} from '../../services/excel.service';
 import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../services/api.service';
 
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -45,8 +46,9 @@ export class AdminComponent implements OnInit {
       this.record_id = params['recordId'];
     });
     if (this.record_id) {
-      this.apiService.getConsultantsInfoById(this.record_id).subscribe((res: any) => {
-        this.onboardingInfo = JSON.parse(res[0].data);
+      this.apiService.getResourceInfoById(this.record_id).subscribe((res: any) => {
+        this.onboardingInfo = JSON.parse(res[0].resp_data);
+        console.log(this.onboardingInfo);
         this.copyOfOnboardingInfo = JSON.parse(JSON.stringify(this.onboardingInfo));
       });
     } else {
@@ -70,7 +72,7 @@ export class AdminComponent implements OnInit {
   }
 
   csvJSON(csvText) {
-    const lines = csvText.split('\n');
+   /* const lines = csvText.split('\n');
     const result = [];
     const headers = lines[0].split(',');
     console.log(headers);
@@ -82,8 +84,58 @@ export class AdminComponent implements OnInit {
       }
       result.push(obj);
     }
+
     console.log(JSON.stringify(result));
     this.JSONData = JSON.stringify(result);
+    result.forEach(res => {
+      const obj = {
+        resourceId: res['Resource ID'],
+        resourceFirstName: res['Resource First Name'],
+        resourceMiddleName: res['Resource Middle Name'],
+        resourceLastName: res['Resource Last Name'],
+        location: res['Location Description'],
+        locationaddress: res['Location Address 1'],
+        city: res['Location City'],
+        state: res['Location State'],
+        country: res['Location Country'],
+        leaderLevel3: res['Leader Level 3'],
+        leaderLevel4: res['Leader Level 4'],
+        leaderLevel5: res['Leader Level 5'],
+        leaderLevel6: res['Leader Level 6'],
+        normalizedVendor: res['Normalized Vendor'],
+        resourceClassification: res['Resource Classification'],
+        employeeOrSubCon: res['Employee/Sub-Contractor'],
+        subContractorCompany: res['Sub-Contractor Company Name'],
+        resourceStatus: res['Resource Status'],
+        startDate: res['Start Date'],
+        notificationdateResourceLeaving: res['Notification Date Resource Leaving'],
+        departureDate: res['Departure Date'],
+        definedAsKeyPersonnel: res['Defined as Key Personnel'],
+        definedAsCriticalresource: res['Defined as Critical Resource'],
+        onShoreOffShore: res['Non T&M (On-Shore or Off-Shore)'],
+        onSiteOffSite: res['Non T&M (On-Site or Off-Site)'],
+        projectId: res['Project ID'],
+        role: res['Role Title/Job Description'],
+        premiumTechnology: res['Premium Technology/Skillset (if applicable)'],
+        poNumber: res['PO/SOW Number'],
+        adsId: res['ADS ID'],
+        laptopNo: res['AMEX Laptop / Desktop Asset Number '],
+        visaStatus: res['Resource Visa Status '],
+        visaexpiration: res['Visa Expiration Date'],
+        bgvCompletionEndDate: res['Background Completion End Date'],
+        commodity: res['Commodity'],
+        newResourceExpectedRate: res['New Resource Expected Rate'],
+        assignmentPeriod: res['New Resource Assignment period (e.g.: 3 months) '],
+        resouceRateException: res['New Resource Rate Exception'],
+        commentary: res['Commentary'],
+        misc: res['Misc.'],
+      };
+      console.log('object', obj);
+      // this.apiService.postResourceInfo(obj).subscribe(resp => {
+      //   console.log(resp);
+      // });
+    });*/
+
   }
 
   convertFile(input) {
@@ -104,7 +156,4 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  onExport() {
-    this.excel.exportAsExcelFile(this.dataToBeExported, 'ExportedFromAngularAPP');
-  }
 }

@@ -4,6 +4,7 @@
     <a class="nav-item nav-link" routerLink="/app/onboardings" *ngIf="userName === 'admin' && currentRoute !== '/app/onboardings'">Onboardings</a>
     <a class="nav-item nav-link" routerLink="/app/compliance" *ngIf="userName === 'admin' && currentRoute !== '/app/compliance'">Compliance</a>
     <a class="nav-item nav-link" routerLink="/app/vendors" *ngIf="userName === 'admin' && currentRoute !== '/app/vendors'">Vendors</a>
+    <a class="nav-item nav-link" routerLink="/app/resource-list" *ngIf="userName === 'admin' && currentRoute !== '/app/resource-list'">Resources</a>
     <a class="nav-item nav-link" routerLink="/" >Logout</a>
     <a class="nav-item nav-link" title="{{userName}}"><i class="fas fa-user-circle"></i></a>
   </div>

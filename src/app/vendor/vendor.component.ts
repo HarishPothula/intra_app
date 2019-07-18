@@ -44,10 +44,10 @@ export class VendorComponent implements OnInit {
       contactPerson: new FormControl('', Validators.required),
       contact: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]\d{9}$/)]),
       email: new FormControl('', [Validators.required]),
-      street: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      zip: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      // city: new FormControl('', Validators.required),
+      // state: new FormControl('', Validators.required),
+      // zip: new FormControl('', Validators.required),
       region: new FormControl('', Validators.required),
       scopeOfServices: new FormControl('', Validators.required),
       newSubmittal: new FormControl('', Validators.required)
@@ -74,7 +74,6 @@ export class VendorComponent implements OnInit {
       });
     }
   }
-
   onDownload() {
     this.apiService.getVendorInfo().subscribe((res: any) => {
       this.excel.exportAsExcelFile(res, 'vendors');
@@ -82,9 +81,9 @@ export class VendorComponent implements OnInit {
   }
 
   onCountry(event) {
-    if (this.vendorInfo) {
-      this.vendorInfo.address = [];
-    }
+    // if (this.vendorInfo) {
+    //   this.vendorInfo.address = [];
+    // }
     this.statesList = csc.getStatesOfCountry(event.id);
   }
 }

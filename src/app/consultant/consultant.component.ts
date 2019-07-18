@@ -1,5 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ApiService} from '../../services/api.service';
+import {ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-consultant',
@@ -7,6 +10,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./consultant.component.scss']
 })
 export class ConsultantComponent implements OnInit {
+  @Input() onboardingInfo: any;
+  @Input() copyOfOnboardingInfo: any;
   public candidateForm: FormGroup;
   public initialForm: FormGroup;
   public clientsList = [{id: 1, name: 'American Express'}];
@@ -23,10 +28,14 @@ export class ConsultantComponent implements OnInit {
     {id: 4, name: 'Bhavana'},
     {id: 4, name: 'Priyanka'},
   ];
-  constructor() {
+  public record_id: any;
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.record_id = params['recordId'];
+    });
     this.initialForm = new FormGroup({
       clientName: new FormControl(null, Validators.required),
       accountManager: new FormControl(null, Validators.required),
@@ -37,34 +46,36 @@ export class ConsultantComponent implements OnInit {
       resourceFirstName: new FormControl('', Validators.required),
       resourceMiddleName: new FormControl(''),
       resourceLastName: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required),
-      leaderLevel3: new FormControl('', Validators.required),
-      leaderLevel5: new FormControl('', Validators.required),
-      leaderLevel6: new FormControl('', Validators.required),
-      normalizedVendor: new FormControl('', Validators.required),
-      resourceClassification: new FormControl('', Validators.required),
-      employeeOrSubCon: new FormControl('', Validators.required),
-      subContractorCompany: new FormControl('', Validators.required),
-      resourceStatus: new FormControl('', Validators.required),
-      startDate: new FormControl('', Validators.required),
-      notificationdateResourceLeaving: new FormControl('', Validators.required),
-      departureDate: new FormControl('', Validators.required),
-      definedAsKeyPersonnel: new FormControl('', Validators.required),
-      definedAsCriticalresource: new FormControl('', Validators.required),
+      location: new FormControl(''),
+      locationaddress: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      country: new FormControl(''),
+      leaderLevel3: new FormControl(''),
+      leaderLevel4: new FormControl(''),
+      leaderLevel5: new FormControl(''),
+      leaderLevel6: new FormControl(''),
+      normalizedVendor: new FormControl(''),
+      resourceClassification: new FormControl(''),
+      employeeOrSubCon: new FormControl(''),
+      subContractorCompany: new FormControl(''),
+      resourceStatus: new FormControl(''),
+      startDate: new FormControl(''),
+      notificationdateResourceLeaving: new FormControl(''),
+      departureDate: new FormControl(''),
+      definedAsKeyPersonnel: new FormControl(''),
+      definedAsCriticalresource: new FormControl(''),
       onShoreOffShore: new FormControl(''),
       onSiteOffSite: new FormControl(''),
       projectId: new FormControl(''),
-      role: new FormControl('', Validators.required),
+      role: new FormControl(''),
       premiumTechnology: new FormControl(''),
-      poNumber: new FormControl('', Validators.required),
+      poNumber: new FormControl(''),
       adsId: new FormControl(''),
-      laptopNo: new FormControl('', Validators.required),
-      visaStatus: new FormControl('', Validators.required),
-      visaexpiration: new FormControl('', Validators.required),
-      bgvCompletionEndDate: new FormControl('', Validators.required),
+      laptopNo: new FormControl(''),
+      visaStatus: new FormControl(''),
+      visaexpiration: new FormControl(''),
+      bgvCompletionEndDate: new FormControl(''),
       commodity: new FormControl(''),
       newResourceExpectedRate: new FormControl(''),
       assignmentPeriod: new FormControl(''),
@@ -75,8 +86,9 @@ export class ConsultantComponent implements OnInit {
   }
 
   onSubmit(value1, value2) {
-    const finalValue = Object.assign(value1, value2);
-    console.log(finalValue);
+    this.apiService.updateResourceById(this.candidateForm.value, this.candidateForm.value.resourceId).subscribe(resp => {
+      console.log(resp);
+    });
   }
 
 }
