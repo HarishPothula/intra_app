@@ -16,7 +16,7 @@ export class ApiService {
   }
 
   sendEmail(value) {
-    return this.http.post('http://localhost:3000/sendemail', value);
+    return this.http.post('http://localhost:3000/email/sendemail', value);
   }
 
   getOnboadingDataById(id) {
@@ -24,76 +24,76 @@ export class ApiService {
   }
 
   postVendorInfo(info) {
-    return this.http.post('http://localhost:3000/postVendorInfo', info);
+    return this.http.post('http://localhost:3000/vendor/postVendorInfo', info);
   }
 
   getVendorInfo() {
-    return this.http.get('http://localhost:3000/getVendorInfo');
+    return this.http.get('http://localhost:3000/vendor/getVendorInfo');
   }
 
   deleteVendorRecord(id) {
     const id$ = {vendorName: id};
-    return this.http.post('http://localhost:3000/deleteVendorRecord', id$);
+    return this.http.post('http://localhost:3000/vendor/deleteVendorRecord', id$);
   }
 
   getVendorById(id) {
     const id$ = {vendorName: id};
-    return this.http.post('http://localhost:3000/vendorById', id$);
+    return this.http.post('http://localhost:3000/vendor/vendorById', id$);
   }
 
   updateVendorById(id, data) {
     const id$ = {vendorName: id, data$: data};
-    return this.http.post('http://localhost:3000/updatevendorById', id$);
+    return this.http.post('http://localhost:3000/vendor/updatevendorById', id$);
   }
 
   postConsultantInfo(info) {
-    return this.http.post('http://localhost:3000/postConsultantInfo', info);
+    return this.http.post('http://localhost:3000/consultant/postConsultantInfo', info);
   }
 
   getConsultantsInfo() {
-    return this.http.get('http://localhost:3000/getConsultantsInfo');
+    return this.http.get('http://localhost:3000/consultant/getConsultantsInfo');
   }
 
   getConsultantsInfoById(id) {
     const id$ = {record_id: id};
-    return this.http.post('http://localhost:3000/consultantById', id$);
+    return this.http.post('http://localhost:3000/consultant/consultantById', id$);
   }
 
   updateConsultantById(data, id) {
     const id$ = {record_id: id, data$: data};
-    return this.http.post('http://localhost:3000/updateConsultantById', id$);
+    return this.http.post('http://localhost:3000/consultant/updateConsultantById', id$);
   }
 
   deleteConsultantById(id) {
     const id$ = {record_id: id};
-    return this.http.post('http://localhost:3000/deleteConsultantRecord', id$);
+    return this.http.post('http://localhost:3000/consultant/deleteConsultantRecord', id$);
   }
 
   postResourceInfo(info) {
-    return this.http.post('http://localhost:3000/postresourceInfo', info);
+    return this.http.post('http://localhost:3000/resource/postresourceInfo', info);
   }
 
   getResourceInfo() {
-    return this.http.get('http://localhost:3000/getResourceInfo');
+    return this.http.get('http://localhost:3000/resource/getResourceInfo');
   }
 
   updateResourceById(data, id) {
     const id$ = {record_id: id, data$: data};
-    return this.http.post('http://localhost:3000/updateResourceById', id$);
+    return this.http.post('http://localhost:3000/resource/updateResourceById', id$);
   }
 
   getresourceAuditById(id) {
     const id$ = {record_id: id};
-    return this.http.post('http://localhost:3000/resourceAuditById', id$);
+    return this.http.post('http://localhost:3000/resource/esourceAuditById', id$);
   }
 
   deleteResourceById(id) {
     const id$ = {record_id: id};
-    return this.http.post('http://localhost:3000/deleteResourceRecord', id$);
+    return this.http.post('http://localhost:3000/resource/deleteResourceRecord', id$);
   }
   getResourceInfoById(id) {
     const id$ = {record_id: id};
-    return this.http.post('http://localhost:3000/resourcetById', id$);
+    return this.http.post('http://localhost:3000/resource/resourcetById', id$);
   }
 
 }
